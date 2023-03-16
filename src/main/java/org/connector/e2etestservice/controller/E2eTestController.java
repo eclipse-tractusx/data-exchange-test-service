@@ -30,11 +30,13 @@ import org.connector.e2etestservice.service.TestConnectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 public class E2eTestController {
@@ -56,10 +58,23 @@ public class E2eTestController {
     @PostMapping("/connector-test")
     public Object testConnector(@Valid @RequestBody ConnectorTestRequest connectorTestRequest) {
         boolean consumerTestResult = testConnectorService.testConnectorAsConsumer(connectorTestRequest);
-        if(consumerTestResult) {
-            return new ResponseEntity("Connector is working as a consumer", HttpStatus.OK);
+        boolean providerTestResult = testConnectorService.testConnectorAsProvider(connectorTestRequest);
+        if(consumerTestResult && providerTestResult) {
+            return new ResponseEntity("Connector is working as a consumer and provider", HttpStatus.OK);
         } else {
-            return new ResponseEntity("Connector is not working as a consumer", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity("Connector is not working properly", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @PostMapping("/api/administration/registration/clearinghouse/selfDescription")
+    public void selfDescriptionLegalPerson(@RequestBody Map<String, String> request) {
+        System.out.println(request.get("data"));
+
+    }
+
+    @PostMapping("/api/administration/Connectors/clearinghouse/selfDescription")
+    public void selfDescriptionServiceOffering(@RequestBody Map<String, String> request) {
+        System.out.println(request.get("data"));
+
     }
 }

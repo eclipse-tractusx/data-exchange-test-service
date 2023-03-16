@@ -23,6 +23,7 @@ package org.connector.e2etestservice.model.policies;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class Obligation {
+public class PermissionRequest {
 
     private String uid;
     private String target;
@@ -46,12 +47,14 @@ public class Obligation {
     private String assignee;
     private String assigner;
     private ArrayList<Constraint> constraints;
-    private String parentPermission;
-    private String consequence;
+    private ArrayList<ObligationRequest> duties;
+    @JsonProperty("edctype")
+    private String edcType;
 
     @SneakyThrows
     public String toJsonString() {
         final ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(this);
     }
+
 }

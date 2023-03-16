@@ -20,11 +20,13 @@
 
 package org.connector.e2etestservice.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
 @Data
+@Builder
 public class ConnectorTestRequest {
 
     @NotNull(message = "Connector host is mandatory")

@@ -43,9 +43,9 @@ import java.util.Map;
 @JsonInclude(Include.NON_NULL)
 public class PolicyDefinition {
 
-    private ArrayList<Permission> permissions;
-    private ArrayList<Prohibition> prohibitions;
-    private ArrayList<Obligation> obligations;
+    private ArrayList<PermissionRequest> permissions;
+    private ArrayList<ProhibitionRequest> prohibitions;
+    private ArrayList<ObligationRequest> obligations;
     private Map<String, String> extensibleProperties;
     private String inheritsFrom;
     private String assigner;

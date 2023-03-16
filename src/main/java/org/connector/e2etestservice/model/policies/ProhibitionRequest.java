@@ -23,7 +23,6 @@ package org.connector.e2etestservice.model.policies;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,25 +30,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 
+import java.util.ArrayList;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class Constraint {
+public class ProhibitionRequest {
 
-    @JsonProperty("edctype")
-    private String edcType;
-
-    @JsonProperty("leftExpression")
-    private Expression leftExpression;
-
-    @JsonProperty("rightExpression")
-    private Expression rightExpression;
-
-    @JsonProperty("operator")
-    private String operator;
+    private String uid;
+    private String target;
+    private Action action;
+    private String assignee;
+    private String assigner;
+    private ArrayList<Constraint> constraints;
 
     @SneakyThrows
     public String toJsonString() {
