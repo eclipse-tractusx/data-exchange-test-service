@@ -17,17 +17,12 @@ Daps regisgter service is used to register the EDC connector into DAPS
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| drs.secret.apiUri | string | `""` | DAPS API URL |
-| drs.secret.authServerUrl | string | `""` | Auth URL for keycloak |
-| drs.secret.clientId | string | `""` | Client id for DAPS |
-| drs.secret.clientSecret | string | `""` | Client Secret for DAPS |
-| drs.secret.jwkSetUri | string | `""` | JWK Set URI |
-| drs.secret.realm | string | `""` | Realm for portal keycloak  |
-| drs.secret.resource | string | `""` | Resource for portal keycloak |
-| drs.secret.tokenUri | string | `""` | DAPS token URL |
+| drs.secret.edcapikey | string | `""` | Key for EDC API |
+| drs.secret.edcapikeyheader | string | `""` | Header for EDC |
+| drs.secret.edchostname | string | `""` | EDC connector Hostname  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` | Set the Image Pull Policy |
-| image.repository | string | `"ghcr.io/catenax-ng/tx-daps-registration-service/dapsreg"` | Image to use for deploying an application |
+| image.repository | string | `"ghcr.io/catenax-ng/tx-data-exchange-test-service/dataexchange"` | Image to use for deploying an application |
 | image.tag | string | `""` | Image tage is defined in chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations."cert-manager.io/cluster-issuer" | string | `"letsencrypt-prod"` |  |
