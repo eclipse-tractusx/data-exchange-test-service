@@ -20,7 +20,7 @@
 
 apiVersion: v2
 name: data-exchange
-description: Daps regisgter service is used to register the EDC connector into DAPS
+description: Data exchange service is used to exchange the data between connectors
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -33,16 +33,16 @@ description: Daps regisgter service is used to register the EDC connector into D
 type: application
 
 sources:
-  -  https://github.com/eclipse-tractusx/daps-registration-service
+  -  https://github.com/eclipse-tractusx/data-exchange-test-service
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 2.0.0
+version: 0.1.0
 
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: 2.0.0
+appVersion: 0.1.0
