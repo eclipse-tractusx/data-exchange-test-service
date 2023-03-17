@@ -10,8 +10,6 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 FROM eclipse-temurin:17.0.6_10-jdk-alpine
 
-RUN apk install
-
 RUN apk update && apk upgrade
 
 ARG DEPENDENCY=/app/target/dependency
