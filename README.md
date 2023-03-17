@@ -30,5 +30,11 @@ Store all above values in application properties file.
 ## API authentication
 Currently, authentication is not supported for this service
 
+
+## Installation Steps
+
+[INSTALL.md](INSTALL.md)
+
+
 ### Licenses
 Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
