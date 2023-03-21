@@ -62,10 +62,10 @@ public class E2eTestController {
         boolean consumerTestResult = testConnectorService.testConnectorAsConsumer(connectorTestRequest);
         boolean providerTestResult = testConnectorService.testConnectorAsProvider(connectorTestRequest);
         if(consumerTestResult && providerTestResult) {
-            result.put("result", "Connector is working as a consumer and provider");
+            result.put("message", "Connector is working as a consumer and provider");
             return new ResponseEntity(result, HttpStatus.OK);
         } else {
-            result.put("result", "Connector is not working properly");
+            result.put("message", "Connector is not working properly");
             return new ResponseEntity(result, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
