@@ -3,8 +3,6 @@ package org.connector.e2etestservice.model.asset;
 import org.connector.e2etestservice.constants.EDCAssetConstant;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 @Service
@@ -15,7 +13,7 @@ public class AssetFactory {
 
         HashMap<String, String> assetProperties = new HashMap<>();
         assetProperties.put(EDCAssetConstant.ASSET_PROP_ID, "200");
-        assetProperties.put(EDCAssetConstant.ASSET_PROP_DESCRIPTION, "Dummy data offer");
+        assetProperties.put(EDCAssetConstant.ASSET_PROP_DESCRIPTION, "Test data offer");
 
         HashMap<String, String> dataAddressProperties = new HashMap<>();
         dataAddressProperties.put("type", "HttpData");

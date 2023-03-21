@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -57,24 +58,15 @@ public class E2eTestController {
     )
     @PostMapping("/connector-test")
     public Object testConnector(@Valid @RequestBody ConnectorTestRequest connectorTestRequest) {
+        Map<String, String> result = new HashMap<>();
         boolean consumerTestResult = testConnectorService.testConnectorAsConsumer(connectorTestRequest);
         boolean providerTestResult = testConnectorService.testConnectorAsProvider(connectorTestRequest);
         if(consumerTestResult && providerTestResult) {
-            return new ResponseEntity("Connector is working as a consumer and provider", HttpStatus.OK);
+            result.put("result", "Connector is working as a consumer and provider");
+            return new ResponseEntity(result, HttpStatus.OK);
         } else {
-            return new ResponseEntity("Connector is not working properly", HttpStatus.INTERNAL_SERVER_ERROR);
+            result.put("result", "Connector is not working properly");
+            return new ResponseEntity(result, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
-
-    @PostMapping("/api/administration/registration/clearinghouse/selfDescription")
-    public void selfDescriptionLegalPerson(@RequestBody Map<String, String> request) {
-        System.out.println(request.get("data"));
-
-    }
-
-    @PostMapping("/api/administration/Connectors/clearinghouse/selfDescription")
-    public void selfDescriptionServiceOffering(@RequestBody Map<String, String> request) {
-        System.out.println(request.get("data"));
-
     }
 }

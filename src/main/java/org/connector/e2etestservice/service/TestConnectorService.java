@@ -23,12 +23,9 @@ package org.connector.e2etestservice.service;
 import lombok.extern.slf4j.Slf4j;
 import org.connector.e2etestservice.api.DataOfferCreationProxy;
 import org.connector.e2etestservice.api.QueryDataOffersProxy;
+import org.connector.e2etestservice.facilitator.ConnectorFacilitator;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
-import org.connector.e2etestservice.model.asset.AssetFactory;
-import org.connector.e2etestservice.model.contractDefinition.ContractDefinitionFactory;
-import org.connector.e2etestservice.model.contractoffers.ContractOffer;
 import org.connector.e2etestservice.model.contractoffers.ContractOffersCatalogResponse;
-import org.connector.e2etestservice.model.policies.PolicyFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -44,7 +41,7 @@ public class TestConnectorService {
     private String testConnectorApiKeyHeader;
     private String testConnectorApiKey;
 
-    private ConnectorUtility connectorUtility;
+    private ConnectorFacilitator connectorFacilitator;
 
     private QueryDataOffersProxy queryDataOffersProxy;
 
@@ -55,14 +52,14 @@ public class TestConnectorService {
     public TestConnectorService(@Value("${default.edc.hostname}") String testConnectorUrl,
                                 @Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
                                 @Value("${default.edc.apiKey}") String testConnectorApiKey,
-                                ConnectorUtility connectorUtility,
+                                ConnectorFacilitator connectorFacilitator,
                                 QueryDataOffersProxy queryDataOffersProxy,
                                 DataOfferCreationProxy dataOfferCreationProxy,
                                 DataOfferService dataOfferService) {
         this.testConnectorUrl = testConnectorUrl;
         this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
         this.testConnectorApiKey = testConnectorApiKey;
-        this.connectorUtility = connectorUtility;
+        this.connectorFacilitator = connectorFacilitator;
         this.queryDataOffersProxy = queryDataOffersProxy;
         this.dataOfferCreationProxy = dataOfferCreationProxy;
         this.dataOfferService = dataOfferService;
@@ -76,29 +73,16 @@ public class TestConnectorService {
                     .apiKeyValue(testConnectorApiKey)
                     .build();
 
-            ContractOffersCatalogResponse contractOfferCatalog = connectorUtility.getContractOfferFromConnector(
+            ContractOffersCatalogResponse contractOfferCatalog = connectorFacilitator.getContractOfferFromConnector(
                     companyConnectorRequest,
-                    companyConnectorRequest.getApiKeyHeader(),
-                    companyConnectorRequest.getApiKeyValue(),
                     preconfiguredTestConnector
             );
 
-            if (contractOfferCatalog != null) {
-                contractOfferCatalog.getContractOffers()
-                        .stream().forEach(
-                                contractOffer -> {
-                                    log.info(contractOffer.getAsset().getProperties().get("asset:prop:id"));
-                                    log.info(contractOffer.getAsset().getProperties().get("asset:prop:description"));
-                                }
-                        );
-            } else {
-                return false;
-            }
+            return contractOfferCatalog != null && contractOfferCatalog.getContractOffers().size() > 0;
         } catch (Exception e) {
-            log.info("Exception occurred" + e);
+            log.info("Exception occurred while testing connector as a consumer" + e);
             return false;
         }
-        return true;
     }
 
 
@@ -109,52 +93,22 @@ public class TestConnectorService {
                 .apiKeyValue(testConnectorApiKey)
                 .build();
 
-
-        // 1. Check if the data offer is already present
-        ContractOffersCatalogResponse contractOfferCatalog = connectorUtility.getContractOfferFromConnector(
-                companyConnectorRequest,
-                companyConnectorRequest.getApiKeyHeader(),
-                companyConnectorRequest.getApiKeyValue(),
-                companyConnectorRequest
-        );
-
-        List listOfOffers = contractOfferCatalog.getContractOffers()
-                .stream()
-                .filter(contractOffer
-                        -> contractOffer.getAsset().getProperties().get("asset:prop:id")
-                        .equalsIgnoreCase("200")).collect(Collectors.toList());
-
-        if(listOfOffers == null || listOfOffers.isEmpty()) {
-            // If data offer is not already present then create new one
-            dataOfferService.createDataOfferForTesting(companyConnectorRequest);
-        } else {
-            log.info("Data offer is already present. No need to create new dummy data offer");
-        }
-
-
         try {
+            // 1. Create data offer for provider
+            dataOfferService.createDataOfferForTesting(companyConnectorRequest);
+
             // 3. Fetch newly created data offer from preconfigured test connector
-            contractOfferCatalog = connectorUtility.getContractOfferFromConnector(
+            ContractOffersCatalogResponse contractOfferCatalog = connectorFacilitator.getContractOfferFromConnector(
                     preconfiguredTestConnector,
-                    preconfiguredTestConnector.getApiKeyHeader(),
-                    preconfiguredTestConnector.getApiKeyValue(),
                     companyConnectorRequest
             );
 
-            if(!contractOfferCatalog.getContractOffers().isEmpty()) {
-                contractOfferCatalog.getContractOffers().stream()
-                        .forEach(contractOffer -> {
-                            log.info(contractOffer.getAsset().getProperties().get("asset:prop:id"));
-                            log.info(contractOffer.getAsset().getProperties().get("asset:prop:description"));
-                            log.info("-----------\n");
-                        });
-                return true;
-            }
+            return !contractOfferCatalog.getContractOffers().isEmpty();
+
         } catch (Exception e) {
-            log.info("Exception occurred"+ e);
+            log.info("Exception occurred while testing connector as a provider"+ e);
             return false;
         }
-        return true;
     }
 
 }
