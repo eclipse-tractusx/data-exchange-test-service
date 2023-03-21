@@ -1,4 +1,5 @@
 /********************************************************************************
+ * Copyright (c) 2022 BMW GmbH
  * Copyright (c) 2022 T-Systems International GmbH
  * Copyright (c) 2022 Contributors to the Eclipse Foundation
  *
@@ -20,9 +21,7 @@
 
 package org.connector.e2etestservice.model.policies;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,24 +29,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 
-import java.util.ArrayList;
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 @Builder
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(Include.NON_NULL)
-public class Obligation {
+@NoArgsConstructor
+@AllArgsConstructor
+public class PolicyDefinitionRequest {
 
-    private String uid;
-    private String target;
-    private Action action;
-    private String assignee;
-    private String assigner;
-    private ArrayList<Constraint> constraints;
-    private String parentPermission;
-    private String consequence;
+    private String id;
+    @JsonProperty("policy")
+    private PolicyRequest policyRequest;
 
     @SneakyThrows
     public String toJsonString() {

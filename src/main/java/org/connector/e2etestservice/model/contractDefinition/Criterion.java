@@ -1,6 +1,7 @@
 /********************************************************************************
- * Copyright (c) 2023 T-Systems International GmbH
- * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2022 BMW GmbH
+ * Copyright (c) 2022 T-Systems International GmbH
+ * Copyright (c) 2022 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -18,18 +19,20 @@
  * SPDX-License-Identifier: Apache-2.0
  ********************************************************************************/
 
-package org.connector.e2etestservice;
+package org.connector.e2etestservice.model.contractDefinition;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@SpringBootApplication
-@EnableFeignClients
-public class E2etestserviceApplication {
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Criterion {
 
-	public static void main(String[] args) {
-		SpringApplication.run(E2etestserviceApplication.class, args);
-	}
-
+    private String operandLeft;
+    private String operator;
+    private String operandRight;
 }

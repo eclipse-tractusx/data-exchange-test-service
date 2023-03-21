@@ -1,4 +1,5 @@
 /********************************************************************************
+ * Copyright (c) 2022 BMW GmbH
  * Copyright (c) 2022 T-Systems International GmbH
  * Copyright (c) 2022 Contributors to the Eclipse Foundation
  *
@@ -18,38 +19,23 @@
  * SPDX-License-Identifier: Apache-2.0
  ********************************************************************************/
 
-package org.connector.e2etestservice.model.policies;
+package org.connector.e2etestservice.model.contractDefinition;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.SneakyThrows;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(Include.NON_NULL)
-public class Prohibition {
+public class ContractDefinitionRequest {
 
-    private String uid;
-    private String target;
-    private Action action;
-    private String assignee;
-    private String assigner;
-    private ArrayList<Constraint> constraints;
-
-    @SneakyThrows
-    public String toJsonString() {
-        final ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(this);
-    }
+    private String accessPolicyId;
+    private String contractPolicyId;
+    private List<Criterion> criteria;
+    private String id;
 }

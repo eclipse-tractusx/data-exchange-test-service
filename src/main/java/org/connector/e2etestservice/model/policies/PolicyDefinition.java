@@ -1,6 +1,6 @@
 /********************************************************************************
- * Copyright (c) 2022 T-Systems International GmbH
- * Copyright (c) 2022 Contributors to the Eclipse Foundation
+ * Copyright (c) 2023 T-Systems International GmbH
+ * Copyright (c) 2023 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -43,9 +43,9 @@ import java.util.Map;
 @JsonInclude(Include.NON_NULL)
 public class PolicyDefinition {
 
-    private ArrayList<Permission> permissions;
-    private ArrayList<Prohibition> prohibitions;
-    private ArrayList<Obligation> obligations;
+    private ArrayList<PermissionRequest> permissions;
+    private ArrayList<ProhibitionRequest> prohibitions;
+    private ArrayList<ObligationRequest> obligations;
     private Map<String, String> extensibleProperties;
     private String inheritsFrom;
     private String assigner;
