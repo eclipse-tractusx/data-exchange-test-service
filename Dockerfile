@@ -14,14 +14,16 @@ RUN apk update && apk upgrade
 
 ARG DEPENDENCY=/app/target/dependency
 
-COPY --from=build ${DEPENDENCY}/e2etestservice*.jar /app/dataexchange.jar
+COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 RUN adduser -DH dataex && addgroup dataex dataex
 
 USER dataex
 
-ENTRYPOINT ["java", "-jar", "dataexchange.jar"]
+ENTRYPOINT ["java", "-cp", "app:app/lib/*", "org.connector.e2etestservice.E2etestserviceApplication"]
 
 EXPOSE 8080
 
-HEALTHCHECK CMD curl --fail http://localhost:8080 || exit 1 
+HEALTHCHECK CMD curl --fail http://localhost:8080 || exit 1

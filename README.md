@@ -8,6 +8,11 @@ This repository is part of the overarching eclipse-tractusx project. It contains
 It is a standalone service which can be self-hosted.
 This service will help for testing the connectors and also can be used for health checks, and monitoring purpose.
 
+### Software Version
+```shell
+Helm version is v0.1.1
+Application version is v0.1.1
+```
 ### How to run
 
 This service is a SpringBoot Java software project managed by Maven.
