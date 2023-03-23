@@ -13,7 +13,10 @@ NA
 ### Added
  - Test connector as a provider flow added
  - Response variable name change
+ - UI page for testing connector
 
+### Removed
+ - Removed hardcoded url
 
 ## [0.1.0] - 2023-03-17
 
