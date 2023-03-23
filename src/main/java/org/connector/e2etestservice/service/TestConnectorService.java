@@ -37,10 +37,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class TestConnectorService {
 
-    private String testConnectorUrl;
-    private String testConnectorApiKeyHeader;
-    private String testConnectorApiKey;
-
     private ConnectorFacilitator connectorFacilitator;
 
     private QueryDataOffersProxy queryDataOffersProxy;
@@ -49,61 +45,29 @@ public class TestConnectorService {
     private DataOfferService dataOfferService;
 
     @Autowired
-    public TestConnectorService(@Value("${default.edc.hostname}") String testConnectorUrl,
-                                @Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
-                                @Value("${default.edc.apiKey}") String testConnectorApiKey,
-                                ConnectorFacilitator connectorFacilitator,
+    public TestConnectorService(ConnectorFacilitator connectorFacilitator,
                                 QueryDataOffersProxy queryDataOffersProxy,
                                 DataOfferCreationProxy dataOfferCreationProxy,
                                 DataOfferService dataOfferService) {
-        this.testConnectorUrl = testConnectorUrl;
-        this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
-        this.testConnectorApiKey = testConnectorApiKey;
         this.connectorFacilitator = connectorFacilitator;
         this.queryDataOffersProxy = queryDataOffersProxy;
         this.dataOfferCreationProxy = dataOfferCreationProxy;
         this.dataOfferService = dataOfferService;
     }
 
-    public boolean testConnectorAsConsumer(ConnectorTestRequest companyConnectorRequest) {
-        try {
-            ConnectorTestRequest preconfiguredTestConnector = ConnectorTestRequest.builder()
-                    .connectorHost(testConnectorUrl)
-                    .apiKeyHeader(testConnectorApiKeyHeader)
-                    .apiKeyValue(testConnectorApiKey)
-                    .build();
-
-            ContractOffersCatalogResponse contractOfferCatalog = connectorFacilitator.getContractOfferFromConnector(
-                    companyConnectorRequest,
-                    preconfiguredTestConnector
-            );
-
-            return contractOfferCatalog != null && contractOfferCatalog.getContractOffers().size() > 0;
-        } catch (Exception e) {
-            log.info("Exception occurred while testing connector as a consumer" + e);
-            return false;
-        }
-    }
-
-
-    public boolean testConnectorAsProvider(ConnectorTestRequest companyConnectorRequest) {
-        ConnectorTestRequest preconfiguredTestConnector = ConnectorTestRequest.builder()
-                .connectorHost(testConnectorUrl)
-                .apiKeyHeader(testConnectorApiKeyHeader)
-                .apiKeyValue(testConnectorApiKey)
-                .build();
-
+    public boolean testConnectorConnectivity(ConnectorTestRequest providerConnectorRequest,
+                                           ConnectorTestRequest consumerTestConnector) {
         try {
             // 1. Create data offer for provider
-            dataOfferService.createDataOfferForTesting(companyConnectorRequest);
+            dataOfferService.createDataOfferForTesting(providerConnectorRequest);
 
             // 3. Fetch newly created data offer from preconfigured test connector
             ContractOffersCatalogResponse contractOfferCatalog = connectorFacilitator.getContractOfferFromConnector(
-                    preconfiguredTestConnector,
-                    companyConnectorRequest
+                    consumerTestConnector,
+                    providerConnectorRequest
             );
 
-            return !contractOfferCatalog.getContractOffers().isEmpty();
+            return contractOfferCatalog != null && !contractOfferCatalog.getContractOffers().isEmpty();
 
         } catch (Exception e) {
             log.info("Exception occurred while testing connector as a provider"+ e);

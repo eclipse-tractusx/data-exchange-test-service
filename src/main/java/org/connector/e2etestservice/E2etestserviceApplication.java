@@ -23,6 +23,9 @@ package org.connector.e2etestservice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableFeignClients
@@ -30,6 +33,22 @@ public class E2etestserviceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(E2etestserviceApplication.class, args);
+	}
+
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins("*")
+						.allowedHeaders(
+								"Access-Control-Allow-Headers",
+								"Access-Control-Allow-Origin",
+								"Authorization",
+								"content-type",
+								"API_KEY");
+			}
+		};
 	}
 
 }

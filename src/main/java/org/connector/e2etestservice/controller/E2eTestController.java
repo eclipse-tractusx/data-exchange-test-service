@@ -26,8 +26,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
+import org.connector.e2etestservice.model.OwnConnectorTestRequest;
 import org.connector.e2etestservice.service.TestConnectorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -42,11 +44,21 @@ import java.util.Map;
 @RestController
 public class E2eTestController {
 
+    private String testConnectorUrl;
+    private String testConnectorApiKeyHeader;
+    private String testConnectorApiKey;
+
     private TestConnectorService testConnectorService;
 
     @Autowired
-    public E2eTestController(TestConnectorService testConnectorService) {
+    public E2eTestController(TestConnectorService testConnectorService,
+                             @Value("${default.edc.hostname}") String testConnectorUrl,
+                             @Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
+                             @Value("${default.edc.apiKey}") String testConnectorApiKey) {
         this.testConnectorService = testConnectorService;
+        this.testConnectorUrl = testConnectorUrl;
+        this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
+        this.testConnectorApiKey = testConnectorApiKey;
     }
 
     @Operation(summary = "Request to test connector",
@@ -59,8 +71,38 @@ public class E2eTestController {
     @PostMapping("/connector-test")
     public Object testConnector(@Valid @RequestBody ConnectorTestRequest connectorTestRequest) {
         Map<String, String> result = new HashMap<>();
-        boolean consumerTestResult = testConnectorService.testConnectorAsConsumer(connectorTestRequest);
-        boolean providerTestResult = testConnectorService.testConnectorAsProvider(connectorTestRequest);
+        ConnectorTestRequest preconfiguredTestConnector = ConnectorTestRequest.builder()
+                .connectorHost(testConnectorUrl)
+                .apiKeyHeader(testConnectorApiKeyHeader)
+                .apiKeyValue(testConnectorApiKey)
+                .build();
+        boolean consumerTestResult = testConnectorService.testConnectorConnectivity(connectorTestRequest, preconfiguredTestConnector);
+        boolean providerTestResult = testConnectorService.testConnectorConnectivity(preconfiguredTestConnector, connectorTestRequest);
+        if(consumerTestResult && providerTestResult) {
+            result.put("message", "Connector is working as a consumer and provider");
+            return new ResponseEntity(result, HttpStatus.OK);
+        } else {
+            result.put("message", "Connector is not working properly");
+            return new ResponseEntity(result, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/own-connector-test")
+    public Object testOwnConnector(@Valid @RequestBody OwnConnectorTestRequest ownConnectorTestRequest) {
+        Map<String, String> result = new HashMap<>();
+        ConnectorTestRequest firstConnector = ConnectorTestRequest.builder()
+                .connectorHost(ownConnectorTestRequest.getFirstConnectorHost())
+                .apiKeyHeader(ownConnectorTestRequest.getFirstApiKeyHeader())
+                .apiKeyValue(ownConnectorTestRequest.getFirstApiKeyValue())
+                .build();
+
+        ConnectorTestRequest secondConnector = ConnectorTestRequest.builder()
+                .connectorHost(ownConnectorTestRequest.getSecondConnectorHost())
+                .apiKeyHeader(ownConnectorTestRequest.getSecondApiKeyHeader())
+                .apiKeyValue(ownConnectorTestRequest.getSecondApiKeyValue())
+                .build();
+        boolean consumerTestResult = testConnectorService.testConnectorConnectivity(secondConnector, firstConnector);
+        boolean providerTestResult = testConnectorService.testConnectorConnectivity(firstConnector, secondConnector);
         if(consumerTestResult && providerTestResult) {
             result.put("message", "Connector is working as a consumer and provider");
             return new ResponseEntity(result, HttpStatus.OK);

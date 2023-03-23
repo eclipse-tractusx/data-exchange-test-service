@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
+    <title>Data exchange test service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Test your connector">
+    <style>
+body {background-color:#ffffff;background-repeat:no-repeat;background-position:top left;background-attachment:fixed;}
+h1{font-family:Arial, sans-serif;color:#000000;background-color:#ffffff;}
+p {font-family:Georgia, serif;font-size:14px;font-style:normal;font-weight:normal;color:#000000;background-color:#ffffff;}
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+                url('http://i.stack.imgur.com/FhHRx.gif')
+                50% 50%
+                no-repeat;
+}
+
+body.loading .modal {
+    overflow: hidden;
+}
+
+body.loading .modal {
+    display: block;
+}
+</style>
+</head>
+<body>
+<img src="loading.gif" id="img" style="display:none"/ >
+<div class="row col-md-12">
+    <h1> Option 1: Test your own connector with preconfigured test connector </h1>
+    <h4>Note: This test will be performed as both, Data Consumer and Data Provider.</h4><br>
+</div>
+<div class="row">
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="connectorUrl">Own connector URL:</label><br>
+            <input type="text" class="col-md-12" id="connectorUrl" name="connectorUrl"><br>
+        </div>
+    </div>
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="preconfiguredConnectorUrl">Preconfigured Connector URL:</label><br>
+            <input type="text" class="col-md-12" id="preconfiguredConnectorUrl" readonly value="https://edc-cp-prv-pen.int.demo.catena-x.net/" name="preconfiguredConnectorUrl"><br>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="apiKeyHeader">API key header:</label><br>
+            <input type="text" class="col-md-12" value="X-Api-Key" id="apiKeyHeader" name="apiKeyHeader"><br>
+        </div>
+    </div>
+    <div class="col-md-6" align="center"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="apiKey">API key:</label><br>
+            <input type="text" class="col-md-12" id="apiKey" name="apiKey"><br>
+        </div>
+    </div>
+    <div class="col-md-6" align="center"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4" align="center"></div>
+    <div class="col-md-4" align="center">
+        <br><input type="submit" id="submit" value="Test connector"><br>
+    </div>
+    <div class="col-md-4" align="center"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4" align="center"></div>
+    <div class="col-md-4" align="center">
+        <label for="responseCode">Response code:</label><br>
+        <input type="text" class="col-md-12" id="responseCode" name="responseCode">
+    </div>
+    <div class="col-md-4" align="center"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4" align="center"></div>
+    <div class="col-md-4" align="center">
+        <label for="response">Response message:</label><br>
+        <input type="text" class="col-md-12" id="response" name="response"><br>
+    </div>
+    <div class="col-md-4" align="center"></div>
+</div>
+
+<!---Second part of the page-->
+
+<hr>
+<div class="row col-md-12">
+    <h1> Option 2: Test your connector with any other network connector </h1><br>
+</div>
+<div class="row">
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="firstConnectorUrl">First Connector URL:</label><br>
+            <input type="text" class="col-md-12" id="firstConnectorUrl" name="firstConnectorUrl"><br>
+        </div>
+    </div>
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="secondConnectorUrl">Second Connector URL:</label><br>
+            <input type="text" class="col-md-12" id="secondConnectorUrl" name="secondConnectorUrl"><br>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="firstApiKeyHeader">API key header of first connector:</label><br>
+            <input type="text" class="col-md-12" value="X-Api-Key" id="firstApiKeyHeader" name="firstApiKeyHeader"><br>
+        </div>
+    </div>
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="secondApiKeyHeader">API key header of first connector:</label><br>
+            <input type="text" class="col-md-12" value="X-Api-Key" id="secondApiKeyHeader" name="secondApiKeyHeader"><br>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="firstApiKey">API key of first connector:</label><br>
+            <input type="text" class="col-md-12" id="firstApiKey" name="firstApiKey"><br>
+        </div>
+    </div>
+    <div class="col-md-6" align="center">
+        <div class="col-md-12" align="center">
+            <label for="secondApiKey">API key of first connector:</label><br>
+            <input type="text" class="col-md-12" id="secondApiKey" name="secondApiKey"><br>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4" align="center"></div>
+    <div class="col-md-4" align="center">
+        <br><input type="submit" id="testOwnConnector" value="Test connector"><br>
+    </div>
+    <div class="col-md-4" align="center"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4" align="center"></div>
+    <div class="col-md-4" align="center">
+        <label for="responseCodeOwnConnector">Response code:</label><br>
+        <input type="text" class="col-md-12" id="responseCodeOwnConnector" name="responseCodeOwnConnector">
+    </div>
+    <div class="col-md-4" align="center"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4" align="center"></div>
+    <div class="col-md-4" align="center">
+        <label for="responseOwnConnector">Response message:</label><br>
+        <input type="text" class="col-md-12" id="responseOwnConnector" name="responseOwnConnector"><br>
+    </div>
+    <div class="col-md-4" align="center"></div>
+</div>
+<div class="modal"></div>
+
+
+<script>
+    $body = $("body");
+
+    $(document).on({
+        ajaxStart: function() { $body.addClass("loading");    },
+         ajaxStop: function() { $body.removeClass("loading"); }
+    });
+    $(document).ready(function(){
+
+        $("#submit").click(function(){
+<!--            $('#img').show();-->
+            $("#response").val("");
+            $("#responseCode").val("");
+
+            var dataJson = {
+                connectorHost: $("#connectorUrl").val(),
+                apiKeyHeader: $("#apiKeyHeader").val(),
+                apiKeyValue: $("#apiKey").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/connector-test",
+                data: JSON.stringify(dataJson),
+                contentType: "application/json; charset=utf-8",
+                success: function (msg, textStatus, xhr) {
+                    $("#response").val(msg.message);
+                    $("#responseCode").val(xhr.status);
+                },
+                error: function (error) {
+                    $("#response").val(error.responseJSON.message);
+                    $("#responseCode").val(error.status);
+                }
+            });
+        });
+
+        $("#testOwnConnector").click(function(){
+            $('#img').show();
+            $("#responseOwnConnector").val("");
+            $("#responseCodeOwnConnector").val("");
+
+            var dataJson = {
+                firstConnectorHost: $("#firstConnectorUrl").val(),
+                firstApiKeyHeader: $("#firstApiKeyHeader").val(),
+                firstApiKeyValue: $("#firstApiKey").val(),
+                secondConnectorHost: $("#secondConnectorUrl").val(),
+                secondApiKeyHeader: $("#secondApiKeyHeader").val(),
+                secondApiKeyValue: $("#secondApiKey").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/own-connector-test",
+                data: JSON.stringify(dataJson),
+                contentType: "application/json; charset=utf-8",
+                success: function (msg, textStatus, xhr) {
+                    $("#responseOwnConnector").val(msg.message);
+                    $("#responseCodeOwnConnector").val(xhr.status);
+                },
+                error: function (error) {
+                    $("#responseOwnConnector").val(error.responseJSON.message);
+                    $("#responseCodeOwnConnector").val(error.status);
+                }
+            });
+            $('#img').hide();
+        });
+    });
+</script>
+
+</body>
+</html>
