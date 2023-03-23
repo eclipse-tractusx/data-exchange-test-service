@@ -36,7 +36,6 @@ body.loading .modal {
 </style>
 </head>
 <body>
-<img src="loading.gif" id="img" style="display:none"/ >
 <div class="row col-md-12">
     <h1> Option 1: Test your own connector with preconfigured test connector </h1>
     <h4>Note: This test will be performed as both, Data Consumer and Data Provider.</h4><br>
@@ -183,7 +182,6 @@ body.loading .modal {
 
 <script>
     $body = $("body");
-
     $(document).on({
         ajaxStart: function() { $body.addClass("loading");    },
          ajaxStop: function() { $body.removeClass("loading"); }
@@ -202,7 +200,7 @@ body.loading .modal {
 
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/connector-test",
+                url: "connector-test",
                 data: JSON.stringify(dataJson),
                 contentType: "application/json; charset=utf-8",
                 success: function (msg, textStatus, xhr) {
@@ -231,7 +229,7 @@ body.loading .modal {
 
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/own-connector-test",
+                url: "own-connector-test",
                 data: JSON.stringify(dataJson),
                 contentType: "application/json; charset=utf-8",
                 success: function (msg, textStatus, xhr) {
