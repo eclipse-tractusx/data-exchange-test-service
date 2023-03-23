@@ -191,7 +191,6 @@ body.loading .modal {
     $(document).ready(function(){
 
         $("#submit").click(function(){
-<!--            $('#img').show();-->
             $("#response").val("");
             $("#responseCode").val("");
 
@@ -218,7 +217,6 @@ body.loading .modal {
         });
 
         $("#testOwnConnector").click(function(){
-            $('#img').show();
             $("#responseOwnConnector").val("");
             $("#responseCodeOwnConnector").val("");
 
@@ -245,7 +243,6 @@ body.loading .modal {
                     $("#responseCodeOwnConnector").val(error.status);
                 }
             });
-            $('#img').hide();
         });
     });
 </script>
