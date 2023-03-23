@@ -8,8 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 NA
 
+## [0.1.1] - 2023-03-23
+
+### Added
+ - Test connector as a provider flow added
+ - Response variable name change
+
 
 ## [0.1.0] - 2023-03-17
 
 ### Added
-- Addition of helm charts
+ - Addition of helm charts
+ - Added AUTHORS.md, CHANGELOG.md, CODE_OF_CONDUCT.md, CONTRIBUTING.md, INSTALL.md, NOTICE.md, SECURITY.md file
+ - Added LICENSE file
+
