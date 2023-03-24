@@ -61,8 +61,9 @@ public class E2eTestController {
         this.testConnectorApiKey = testConnectorApiKey;
     }
 
-    @Operation(summary = "Request to test connector",
-            description = "Request to test connector.")
+    @Operation(summary = "Request to test connector with preconfigured connector",
+            description = "Provide details of your connector and it will get tested as a consumer and provider against " +
+                    "preconfigured connector.")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = String.class)))
@@ -87,6 +88,14 @@ public class E2eTestController {
         }
     }
 
+    @Operation(summary = "Request to test connector with other connector",
+            description = "Provide details of two connectors and this api will test communication between those two" +
+                    " connectors as a provider and consumer.")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = String.class)))
+            }
+    )
     @PostMapping("/own-connector-test")
     public Object testOwnConnector(@Valid @RequestBody OwnConnectorTestRequest ownConnectorTestRequest) {
         Map<String, String> result = new HashMap<>();

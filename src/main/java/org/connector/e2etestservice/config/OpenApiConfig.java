@@ -29,10 +29,10 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(
                 title = "E2E Data Exchange Test Service",
                 description = "" +
-                        "This service enables end to end testing of connectors",
+                        "This service enables end to end testing of connector as a provider and consumer.",
                 version = "1.0"
         ),
-        servers = @Server(url = "https://e2edets.dev.demo.catena-x.net")
+        servers = @Server(url = "https://dataex.int.demo.catena-x.net")
 )
 @Configuration
 public class OpenApiConfig {
