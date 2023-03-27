@@ -55,8 +55,8 @@ public class TestConnectorService {
         this.dataOfferService = dataOfferService;
     }
 
-    public boolean testConnectorConnectivity(ConnectorTestRequest providerConnectorRequest,
-                                           ConnectorTestRequest consumerTestConnector) {
+    public boolean testConnectorConnectivity(ConnectorTestRequest consumerTestConnector,
+                                           ConnectorTestRequest providerConnectorRequest) {
         try {
             // 1. Create data offer for provider
             dataOfferService.createDataOfferForTesting(providerConnectorRequest);

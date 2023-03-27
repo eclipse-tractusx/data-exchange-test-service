@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -37,7 +37,7 @@ body.loading .modal {
 </head>
 <body>
 <div class="row col-md-12">
-    <h1> Option 1: Test your own connector with preconfigured test connector </h1>
+    <h1> Option 1: Test your own connector with preconfigured test connector</h1>
     <h4>Note: This test will be performed as both, Data Consumer and Data Provider.</h4><br>
 </div>
 <div class="row">
@@ -50,7 +50,7 @@ body.loading .modal {
     <div class="col-md-6" align="center">
         <div class="col-md-12" align="center">
             <label for="preconfiguredConnectorUrl">Preconfigured Connector URL:</label><br>
-            <input type="text" class="col-md-12" id="preconfiguredConnectorUrl" readonly value="https://edc-cp-prv-pen.int.demo.catena-x.net" name="preconfiguredConnectorUrl"><br>
+            <input type="text" class="col-md-12" id="preconfiguredConnectorUrl" th:value="${connectorUrl}" readonly name="preconfiguredConnectorUrl"><br>
         </div>
     </div>
 </div>
