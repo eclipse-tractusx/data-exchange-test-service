@@ -20,59 +20,44 @@
 
 package org.connector.e2etestservice.service;
 
-import lombok.extern.slf4j.Slf4j;
-import org.connector.e2etestservice.api.DataOfferCreationProxy;
-import org.connector.e2etestservice.api.QueryDataOffersProxy;
 import org.connector.e2etestservice.facilitator.ConnectorFacilitator;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
 import org.connector.e2etestservice.model.contractoffers.ContractOffersCatalogResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
 public class TestConnectorService {
 
-    private ConnectorFacilitator connectorFacilitator;
+	private ConnectorFacilitator connectorFacilitator;
 
-    private QueryDataOffersProxy queryDataOffersProxy;
+	private DataOfferService dataOfferService;
 
-    private DataOfferCreationProxy dataOfferCreationProxy;
-    private DataOfferService dataOfferService;
+	@Autowired
+	public TestConnectorService(ConnectorFacilitator connectorFacilitator, DataOfferService dataOfferService) {
+		this.connectorFacilitator = connectorFacilitator;
+		this.dataOfferService = dataOfferService;
+	}
 
-    @Autowired
-    public TestConnectorService(ConnectorFacilitator connectorFacilitator,
-                                QueryDataOffersProxy queryDataOffersProxy,
-                                DataOfferCreationProxy dataOfferCreationProxy,
-                                DataOfferService dataOfferService) {
-        this.connectorFacilitator = connectorFacilitator;
-        this.queryDataOffersProxy = queryDataOffersProxy;
-        this.dataOfferCreationProxy = dataOfferCreationProxy;
-        this.dataOfferService = dataOfferService;
-    }
+	public boolean testConnectorConnectivity(ConnectorTestRequest consumerTestConnector,
+			ConnectorTestRequest providerConnectorRequest) {
+		try {
+			// 1. Create data offer for provider
+			dataOfferService.createDataOfferForTesting(providerConnectorRequest);
 
-    public boolean testConnectorConnectivity(ConnectorTestRequest consumerTestConnector,
-                                           ConnectorTestRequest providerConnectorRequest) {
-        try {
-            // 1. Create data offer for provider
-            dataOfferService.createDataOfferForTesting(providerConnectorRequest);
+			// 3. Fetch newly created data offer from preconfigured test connector
+			ContractOffersCatalogResponse contractOfferCatalog = connectorFacilitator
+					.getContractOfferFromConnector(consumerTestConnector, providerConnectorRequest);
 
-            // 3. Fetch newly created data offer from preconfigured test connector
-            ContractOffersCatalogResponse contractOfferCatalog = connectorFacilitator.getContractOfferFromConnector(
-                    consumerTestConnector,
-                    providerConnectorRequest
-            );
+			return contractOfferCatalog != null && !contractOfferCatalog.getContractOffers().isEmpty();
 
-            return contractOfferCatalog != null && !contractOfferCatalog.getContractOffers().isEmpty();
-
-        } catch (Exception e) {
-            log.info("Exception occurred while testing connector as a provider"+ e);
-            return false;
-        }
-    }
+		} catch (Exception e) {
+			log.info("Exception occurred while testing connector as a provider" + e);
+			return false;
+		}
+	}
 
 }

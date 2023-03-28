@@ -1,7 +1,7 @@
 package org.connector.e2etestservice.facilitator;
 
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
+import java.net.URI;
+
 import org.connector.e2etestservice.api.DataOfferCreationProxy;
 import org.connector.e2etestservice.api.QueryDataOffersProxy;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
@@ -14,7 +14,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.net.URI;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j

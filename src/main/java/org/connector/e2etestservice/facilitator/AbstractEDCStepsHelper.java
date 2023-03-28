@@ -20,8 +20,6 @@
 
 package org.connector.e2etestservice.facilitator;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import java.util.HashMap;
 import java.util.Map;
 

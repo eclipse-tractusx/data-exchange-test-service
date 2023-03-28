@@ -20,11 +20,9 @@
 
 package org.connector.e2etestservice.controller;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.connector.e2etestservice.model.ConnectorTestRequest;
 import org.connector.e2etestservice.model.OwnConnectorTestRequest;
 import org.connector.e2etestservice.service.TestConnectorService;
@@ -32,92 +30,85 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 
 @RestController
 public class E2eTestController {
 
-    private String testConnectorUrl;
-    private String testConnectorApiKeyHeader;
-    private String testConnectorApiKey;
+	private static final String MESSAGE = "message";
+	private String testConnectorUrl;
+	private String testConnectorApiKeyHeader;
+	private String testConnectorApiKey;
 
-    private TestConnectorService testConnectorService;
+	private TestConnectorService testConnectorService;
 
-    @Autowired
-    public E2eTestController(TestConnectorService testConnectorService,
-                             @Value("${default.edc.hostname}") String testConnectorUrl,
-                             @Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
-                             @Value("${default.edc.apiKey}") String testConnectorApiKey) {
-        this.testConnectorService = testConnectorService;
-        this.testConnectorUrl = testConnectorUrl;
-        this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
-        this.testConnectorApiKey = testConnectorApiKey;
-    }
+	@Autowired
+	public E2eTestController(TestConnectorService testConnectorService,
+			@Value("${default.edc.hostname}") String testConnectorUrl,
+			@Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
+			@Value("${default.edc.apiKey}") String testConnectorApiKey) {
+		this.testConnectorService = testConnectorService;
+		this.testConnectorUrl = testConnectorUrl;
+		this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
+		this.testConnectorApiKey = testConnectorApiKey;
+	}
 
-    @Operation(summary = "Request to test connector with preconfigured connector",
-            description = "Provide details of your connector and it will get tested as a consumer and provider against " +
-                    "preconfigured connector.")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = String.class)))
-            }
-    )
-    @PostMapping("/connector-test")
-    public Object testConnector(@Valid @RequestBody ConnectorTestRequest connectorTestRequest) {
-        Map<String, String> result = new HashMap<>();
-        ConnectorTestRequest preconfiguredTestConnector = ConnectorTestRequest.builder()
-                .connectorHost(testConnectorUrl)
-                .apiKeyHeader(testConnectorApiKeyHeader)
-                .apiKeyValue(testConnectorApiKey)
-                .build();
-        boolean consumerTestResult = testConnectorService.testConnectorConnectivity(connectorTestRequest, preconfiguredTestConnector);
-        boolean providerTestResult = testConnectorService.testConnectorConnectivity(preconfiguredTestConnector, connectorTestRequest);
-        if(consumerTestResult && providerTestResult) {
-            result.put("message", "Connector is working as a consumer and provider");
-            return new ResponseEntity(result, HttpStatus.OK);
-        } else {
-            result.put("message", "Connector is not working properly");
-            return new ResponseEntity(result, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	@Operation(summary = "Request to test connector with preconfigured connector", description = "Provide details of your connector and it will get tested as a consumer and provider against "
+			+ "preconfigured connector.")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = String.class))) })
+	@PostMapping("/connector-test")
+	public ResponseEntity<Object> testConnector(@Valid @RequestBody ConnectorTestRequest connectorTestRequest) {
+		Map<String, String> result = new HashMap<>();
+		ConnectorTestRequest preconfiguredTestConnector = ConnectorTestRequest.builder().connectorHost(testConnectorUrl)
+				.apiKeyHeader(testConnectorApiKeyHeader).apiKeyValue(testConnectorApiKey).build();
+		boolean consumerTestResult = testConnectorService.testConnectorConnectivity(connectorTestRequest,
+				preconfiguredTestConnector);
+		boolean providerTestResult = testConnectorService.testConnectorConnectivity(preconfiguredTestConnector,
+				connectorTestRequest);
+		if (consumerTestResult && providerTestResult) {
+			result.put(MESSAGE, "Connector is working as a consumer and provider");
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} else {
+			result.put(MESSAGE, "Connector is not working properly");
+			return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    @Operation(summary = "Request to test connector with other connector",
-            description = "Provide details of two connectors and this api will test communication between those two" +
-                    " connectors as a provider and consumer.")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = String.class)))
-            }
-    )
-    @PostMapping("/own-connector-test")
-    public Object testOwnConnector(@Valid @RequestBody OwnConnectorTestRequest ownConnectorTestRequest) {
-        Map<String, String> result = new HashMap<>();
-        ConnectorTestRequest firstConnector = ConnectorTestRequest.builder()
-                .connectorHost(ownConnectorTestRequest.getFirstConnectorHost())
-                .apiKeyHeader(ownConnectorTestRequest.getFirstApiKeyHeader())
-                .apiKeyValue(ownConnectorTestRequest.getFirstApiKeyValue())
-                .build();
+	@Operation(summary = "Request to test connector with other connector", description = "Provide details of two connectors and this api will test communication between those two"
+			+ " connectors as a provider and consumer.")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = String.class))) })
+	@PostMapping("/own-connector-test")
+	public ResponseEntity<Object> testOwnConnector(
+			@Valid @RequestBody OwnConnectorTestRequest ownConnectorTestRequest) {
+		Map<String, String> result = new HashMap<>();
+		ConnectorTestRequest firstConnector = ConnectorTestRequest.builder()
+				.connectorHost(ownConnectorTestRequest.getFirstConnectorHost())
+				.apiKeyHeader(ownConnectorTestRequest.getFirstApiKeyHeader())
+				.apiKeyValue(ownConnectorTestRequest.getFirstApiKeyValue()).build();
 
-        ConnectorTestRequest secondConnector = ConnectorTestRequest.builder()
-                .connectorHost(ownConnectorTestRequest.getSecondConnectorHost())
-                .apiKeyHeader(ownConnectorTestRequest.getSecondApiKeyHeader())
-                .apiKeyValue(ownConnectorTestRequest.getSecondApiKeyValue())
-                .build();
-        boolean consumerTestResult = testConnectorService.testConnectorConnectivity(secondConnector, firstConnector);
-        boolean providerTestResult = testConnectorService.testConnectorConnectivity(firstConnector, secondConnector);
-        if(consumerTestResult && providerTestResult) {
-            result.put("message", "Connector is working as a consumer and provider");
-            return new ResponseEntity(result, HttpStatus.OK);
-        } else {
-            result.put("message", "Connector is not working properly");
-            return new ResponseEntity(result, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+		ConnectorTestRequest secondConnector = ConnectorTestRequest.builder()
+				.connectorHost(ownConnectorTestRequest.getSecondConnectorHost())
+				.apiKeyHeader(ownConnectorTestRequest.getSecondApiKeyHeader())
+				.apiKeyValue(ownConnectorTestRequest.getSecondApiKeyValue()).build();
+		boolean consumerTestResult = testConnectorService.testConnectorConnectivity(secondConnector, firstConnector);
+		boolean providerTestResult = testConnectorService.testConnectorConnectivity(firstConnector, secondConnector);
+		if (consumerTestResult && providerTestResult) {
+			result.put(MESSAGE, "Connector is working as a consumer and provider");
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} else {
+			result.put(MESSAGE, "Connector is not working properly");
+			return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }

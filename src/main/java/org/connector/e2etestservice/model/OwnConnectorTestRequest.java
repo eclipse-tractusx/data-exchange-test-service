@@ -20,31 +20,30 @@
 
 package org.connector.e2etestservice.model;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
-
-import javax.validation.constraints.NotNull;
 
 @Data
 @Builder
 public class OwnConnectorTestRequest {
 
-    @NotNull(message = "Connector host is mandatory")
+    @NotBlank(message = "Connector host is mandatory")
     private String firstConnectorHost;
 
-    @NotNull(message = "Api key header is mandatory")
+    @NotBlank(message = "Api key header is mandatory")
     private String firstApiKeyHeader;
 
-    @NotNull(message = "Api key is mandatory")
+    @NotBlank(message = "Api key is mandatory")
     private String firstApiKeyValue;
 
-    @NotNull(message = "Connector host is mandatory")
+    @NotBlank(message = "Connector host is mandatory")
     private String secondConnectorHost;
 
-    @NotNull(message = "Api key header is mandatory")
+    @NotBlank(message = "Api key header is mandatory")
     private String secondApiKeyHeader;
 
-    @NotNull(message = "Api key is mandatory")
+    @NotBlank(message = "Api key is mandatory")
     private String secondApiKeyValue;
 
 }
