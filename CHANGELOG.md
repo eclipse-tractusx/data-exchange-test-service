@@ -8,6 +8,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 NA
 
+
+## [0.1.3] - 2023-03-29
+
+### Added
+
+ - Refatcor UI and update spring boot version
+ - Fetch preconfgiured connector url from properties file
+
+### Removed
+ - Removed deprecated methods 
+
+
+## [0.1.2] - 2023-03-27
+
+### Changed
+
+ - Open api changes
+ - Fetch preconfgiured connector url from properties file
+
+
 ## [0.1.1] - 2023-03-23
 
 ### Added
