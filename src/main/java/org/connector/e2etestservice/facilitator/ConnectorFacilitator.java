@@ -73,7 +73,7 @@ public class ConnectorFacilitator extends AbstractEDCStepsHelper {
                     getAuthHeader(connectorRequest.getApiKeyHeader(), connectorRequest.getApiKeyValue()),
                     "200"
             );
-            if (response.getStatusCodeValue() == 200) {
+            if (response.getStatusCode().value() == 200) {
                 log.info("Test Asset Present");
                 return true;
             } else {
@@ -108,7 +108,7 @@ public class ConnectorFacilitator extends AbstractEDCStepsHelper {
                     getAuthHeader(connectorRequest.getApiKeyHeader(), connectorRequest.getApiKeyValue()),
                     policyId
             );
-            if (response.getStatusCodeValue() == 200) {
+            if (response.getStatusCode().value() == 200) {
                 log.info("Test policy Present: " + policyId);
                 return true;
             } else {
@@ -143,7 +143,7 @@ public class ConnectorFacilitator extends AbstractEDCStepsHelper {
                     getAuthHeader(connectorRequest.getApiKeyHeader(), connectorRequest.getApiKeyValue()),
                     "ContractDefinition200"
             );
-            if(response.getStatusCodeValue() == 200) {
+            if(response.getStatusCode().value() == 200) {
                 log.info("Test contract definition is Present");
                 return true;
             } else {
