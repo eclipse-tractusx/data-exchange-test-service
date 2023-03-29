@@ -8,6 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 NA
 
+## [0.1.2] - 2023-03-28
+
+### Added
+- Spring boot version update
+- UI refactoring
+
+### Removed
+- Use of old deprecated methods after version update
+
 ## [0.1.1] - 2023-03-23
 
 ### Added
