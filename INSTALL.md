@@ -1,4 +1,4 @@
-## Installation Steps:-
+## Installation Steps:
 
 Helm charts are provided inside https://github.com/eclipse-tractusx/data-exchange-test-service
 
@@ -9,7 +9,7 @@ Helm charts are provided inside https://github.com/eclipse-tractusx/data-exchang
            helm repo add data-exchange https://eclipse-tractusx.github.io/charts/dev
     b.) To search the specific repo in helm repositories 
            helm search repo tractusx-dev
-    c.) To install using helm command:-   
+    c.) To install using helm command:  
            helm install data-exchange tractusx-dev/data-exchange
 
 
