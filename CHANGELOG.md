@@ -13,11 +13,11 @@ NA
 
 ### Added
 
- - Refatcor UI and update spring boot version
- - Fetch preconfgiured connector url from properties file
+ - Spring boot version update
+ - UI refactoring
 
 ### Removed
- - Removed deprecated methods 
+ - Use of old deprecated methods after version update 
 
 
 ## [0.1.2] - 2023-03-27
@@ -26,7 +26,6 @@ NA
 
  - Open api changes
  - Fetch preconfgiured connector url from properties file
-
 
 ## [0.1.1] - 2023-03-23
 
