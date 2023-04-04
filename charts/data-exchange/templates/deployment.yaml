@@ -52,8 +52,13 @@ spec:
             valueFrom: 
               secretKeyRef:
                 name: {{ include "data-exchange.applicationSecret.name" . }}
-                key: edcapikey
-
+                key: edcapikey           
+          - name: E2EDETS_URL
+            valueFrom: 
+              secretKeyRef:
+                name: {{ include "data-exchange.applicationSecret.name" . }}
+                key: e2edetsURL
+                
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

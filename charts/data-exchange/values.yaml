@@ -98,6 +98,8 @@ drs:
     edcapikeyheader: ""
     # -- Key for EDC API
     edcapikey: ""
+    # -- URL for E2E data exchange test service
+    e2edetsurl: ""
 
     
 resources:
