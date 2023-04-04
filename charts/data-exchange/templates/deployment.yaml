@@ -54,10 +54,10 @@ spec:
                 name: {{ include "data-exchange.applicationSecret.name" . }}
                 key: edcapikey           
           - name: E2EDETS_URL
-            valueFrom: 
+            valueFrom:
               secretKeyRef:
                 name: {{ include "data-exchange.applicationSecret.name" . }}
-                key: e2edetsURL
+                key: e2edetsurl
                 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
