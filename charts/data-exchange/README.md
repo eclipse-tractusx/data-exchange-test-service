@@ -1,6 +1,6 @@
 # data-exchange
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.3](https://img.shields.io/badge/AppVersion-0.1.3-informational?style=flat-square)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.4](https://img.shields.io/badge/AppVersion-0.1.4-informational?style=flat-square)
 
 Data exchange service is used to exchange the data between connectors
 
@@ -17,6 +17,7 @@ Data exchange service is used to exchange the data between connectors
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| drs.secret.e2edetsurl | string | `""` | URL for E2E data exchange test service |
 | drs.secret.edcapikey | string | `""` | Key for EDC API |
 | drs.secret.edcapikeyheader | string | `""` | Header for EDC |
 | drs.secret.edchostname | string | `""` | EDC connector Hostname  |

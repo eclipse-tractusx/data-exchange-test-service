@@ -23,6 +23,7 @@ package org.connector.e2etestservice.config;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.servers.Server;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 @OpenAPIDefinition(
@@ -32,7 +33,7 @@ import org.springframework.context.annotation.Configuration;
                         "This service enables end to end testing of connector as a provider and consumer.",
                 version = "1.0"
         ),
-        servers = @Server(url = "https://dataex.int.demo.catena-x.net")
+        servers = @Server(url = "${e2edets_url}")
 )
 @Configuration
 public class OpenApiConfig {

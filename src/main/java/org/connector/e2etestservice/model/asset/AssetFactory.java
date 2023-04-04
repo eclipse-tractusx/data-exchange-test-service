@@ -37,7 +37,7 @@ public class AssetFactory {
 
         HashMap<String, String> dataAddressProperties = new HashMap<>();
         dataAddressProperties.put("type", "HttpData");
-        dataAddressProperties.put("endpoint", "https://jsonplaceholder.typicode.com/todos/3");
+        dataAddressProperties.put("baseUrl", "https://jsonplaceholder.typicode.com/todos/3");
 
         return AssetEntryRequest.builder()
                 .asset(Asset.builder()

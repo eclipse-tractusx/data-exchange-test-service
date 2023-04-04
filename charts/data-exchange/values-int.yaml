@@ -50,3 +50,4 @@ dataex:
     edchostname: "<path:essential-services/data/data-exchange#edchostname>"
     edcapikeyheader: "<path:essential-services/data/data-exchange#edcapikeyheader>"
     edcapikey: "<path:essential-services/data/data-exchange#edcapikey>"
+    e2edetsurl: "<path:essential-services/data/data-exchange#e2edetsurl>"
