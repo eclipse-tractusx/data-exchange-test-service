@@ -59,22 +59,22 @@ public class DataOfferService {
 			}
 
 			// 2. check if already present and then Create policies
-			if (!connectorFacilitator.isTestPolicyPresent(companyConnectorRequest, "AccessPolicy200")) {
+			if (!connectorFacilitator.isTestPolicyPresent(companyConnectorRequest, "AccessPolicySample")) {
 				PolicyDefinitionRequest accessPolicy = policyFactory
-						.generateDummyAccessPolicyRequest("AccessPolicy200");
+						.generateDummyAccessPolicyRequest("AccessPolicySample");
 				connectorFacilitator.createPolicy(companyConnectorRequest, accessPolicy);
 			}
 
-			if (!connectorFacilitator.isTestPolicyPresent(companyConnectorRequest, "UsagePolicy200")) {
-				PolicyDefinitionRequest usagePolicy = policyFactory.generateDummyUsagePolicyRequest("UsagePolicy200");
+			if (!connectorFacilitator.isTestPolicyPresent(companyConnectorRequest, "UsagePolicySample")) {
+				PolicyDefinitionRequest usagePolicy = policyFactory.generateDummyUsagePolicyRequest("UsagePolicySample");
 				connectorFacilitator.createPolicy(companyConnectorRequest, usagePolicy);
 			}
 
 			// 3. check if already present and then Create contract definition
 			if (!connectorFacilitator.isTestContractDefinitionPresent(companyConnectorRequest)) {
 				ContractDefinitionRequest contractDefinitionRequest = contractDefinitionFactory
-						.getDummyContractDefinitionRequest("ContractDefinition200", "AccessPolicy200", "UsagePolicy200",
-								"200");
+						.getDummyContractDefinitionRequest("ContractDefinitionSample", "AccessPolicySample", "UsagePolicySample",
+								"sample");
 				connectorFacilitator.createContractDefinition(companyConnectorRequest, contractDefinitionRequest);
 			}
 

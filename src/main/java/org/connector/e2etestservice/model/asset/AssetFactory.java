@@ -37,9 +37,9 @@ public class AssetFactory {
         String date = d.format(DateTimeFormatter.ofPattern(DATE_FORMATTER));
 
         HashMap<String, String> assetProperties = new HashMap<>();
-        assetProperties.put(EDCAssetConstant.ASSET_PROP_ID, "200");
-        assetProperties.put(EDCAssetConstant.ASSET_PROP_DESCRIPTION, "Test data offer");
-        assetProperties.put(EDCAssetConstant.ASSET_PROP_NAME, "200");
+        assetProperties.put(EDCAssetConstant.ASSET_PROP_ID, "sample");
+        assetProperties.put(EDCAssetConstant.ASSET_PROP_DESCRIPTION, "Sample data offer");
+        assetProperties.put(EDCAssetConstant.ASSET_PROP_NAME, "sample");
         assetProperties.put(EDCAssetConstant.ASSET_PROP_CREATED, date);
 
         HashMap<String, String> dataAddressProperties = new HashMap<>();
