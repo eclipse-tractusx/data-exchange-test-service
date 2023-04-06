@@ -23,17 +23,24 @@ package org.connector.e2etestservice.model.asset;
 import org.connector.e2etestservice.constants.EDCAssetConstant;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 @Service
 public class AssetFactory {
 
+    private static final String DATE_FORMATTER = "dd/MM/yyyy HH:mm:ss";
 
-    public AssetEntryRequest generateDummyAssetObejct() {
+    public AssetEntryRequest generateDummyAssetObject() {
+        LocalDateTime d = LocalDateTime.now();
+        String date = d.format(DateTimeFormatter.ofPattern(DATE_FORMATTER));
 
         HashMap<String, String> assetProperties = new HashMap<>();
         assetProperties.put(EDCAssetConstant.ASSET_PROP_ID, "200");
         assetProperties.put(EDCAssetConstant.ASSET_PROP_DESCRIPTION, "Test data offer");
+        assetProperties.put(EDCAssetConstant.ASSET_PROP_NAME, "200");
+        assetProperties.put(EDCAssetConstant.ASSET_PROP_CREATED, date);
 
         HashMap<String, String> dataAddressProperties = new HashMap<>();
         dataAddressProperties.put("type", "HttpData");

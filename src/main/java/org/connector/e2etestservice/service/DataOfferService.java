@@ -54,7 +54,7 @@ public class DataOfferService {
 		try {
 			// 1. check if already present and then Create Asset
 			if (!connectorFacilitator.isTestAssetPresent(companyConnectorRequest)) {
-				AssetEntryRequest assetEntryRequest = assetFactory.generateDummyAssetObejct();
+				AssetEntryRequest assetEntryRequest = assetFactory.generateDummyAssetObject();
 				connectorFacilitator.createAsset(companyConnectorRequest, assetEntryRequest);
 			}
 

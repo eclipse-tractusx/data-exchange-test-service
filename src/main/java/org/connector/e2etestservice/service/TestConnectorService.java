@@ -48,7 +48,7 @@ public class TestConnectorService {
 			// 1. Create data offer for provider
 			dataOfferService.createDataOfferForTesting(providerConnectorRequest);
 
-			// 3. Fetch newly created data offer from preconfigured test connector
+			// 2. Fetch newly created data offer from preconfigured test connector
 			ContractOffersCatalogResponse contractOfferCatalog = connectorFacilitator
 					.getContractOfferFromConnector(consumerTestConnector, providerConnectorRequest);
 
