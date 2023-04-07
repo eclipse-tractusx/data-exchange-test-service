@@ -20,23 +20,79 @@
 
 package org.connector.e2etestservice.controller;
 
+import jakarta.validation.Valid;
+import org.connector.e2etestservice.Utils;
+import org.connector.e2etestservice.model.ConnectorTestRequest;
+import org.connector.e2etestservice.service.TestConnectorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class UIController {
 
-    @Value("${default.edc.hostname}")
-    private String preconfiguredConnectorUrl;
+    private static final String RESULT = "result";
+
+    private String testConnectorUrl;
+    private String testConnectorApiKeyHeader;
+    private String testConnectorApiKey;
+
+    private TestConnectorService testConnectorService;
+
+    @Autowired
+    public UIController(@Value("${default.edc.hostname}") String testConnectorUrl,
+                        @Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
+                        @Value("${default.edc.apiKey}") String testConnectorApiKey, TestConnectorService testConnectorService) {
+        this.testConnectorUrl = testConnectorUrl;
+        this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
+        this.testConnectorApiKey = testConnectorApiKey;
+        this.testConnectorService = testConnectorService;
+    }
+
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getIndexPage() {
         ModelAndView model = new ModelAndView();
         model.setViewName("index");
-        model.addObject("connectorUrl",preconfiguredConnectorUrl);
+        model.addObject("preconfiguredConnectorUrl",testConnectorUrl);
+        model.addObject("connectorApiKeyHeader","X-Api-Key");
+        return model;
+    }
+
+    @RequestMapping(value = "/testconnector", method = RequestMethod.POST)
+    public ModelAndView getIndexPageWithConnectorDetails(@Valid @RequestBody ConnectorTestRequest connectorTestRequest) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("index");
+
+        // test connector
+        Map<String, String> result = new HashMap<>();
+
+        connectorTestRequest.setConnectorHost(Utils.removeLastSlashFromURL(connectorTestRequest.getConnectorHost()));
+
+        ConnectorTestRequest preconfiguredTestConnector = ConnectorTestRequest.builder()
+                .connectorHost(testConnectorUrl)
+                .apiKeyHeader(testConnectorApiKeyHeader).apiKeyValue(testConnectorApiKey).build();
+        boolean consumerTestResult = testConnectorService.testConnectorConnectivity(connectorTestRequest,
+                preconfiguredTestConnector);
+        boolean providerTestResult = testConnectorService.testConnectorConnectivity(preconfiguredTestConnector,
+                connectorTestRequest);
+        if (consumerTestResult && providerTestResult) {
+            model.addObject(RESULT, "Connector is working as a consumer and provider");
+        } else {
+            model.addObject(RESULT, "Connector is not working properly");
+        }
+
+        model.addObject("preconfiguredConnectorUrl",testConnectorUrl);
+        model.addObject("connectorUrl",connectorTestRequest.getConnectorHost());
+        model.addObject("connectorApiKeyHeader",connectorTestRequest.getApiKeyHeader());
+        model.addObject("connectorApiKey",connectorTestRequest.getApiKeyValue());
         return model;
     }
 }
