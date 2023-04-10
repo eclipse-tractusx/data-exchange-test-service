@@ -102,34 +102,36 @@ SPDX-License-Identifier: Apache-2.0
 						</div>
 						<div class="form-group">
 							<label for="connectorUrl">Connector URL:</label>
-							<input type="text" class="form-control" id="connectorUrl" name="connectorUrl">
+							<input type="text" class="form-control" id="connectorUrl"
+								   th:value="${connectorUrl}" name="connectorUrl">
 						</div>
 						<div class="form-group ">
 							<label for="apiKeyHeader">API key header:</label>
 							<input type="text" class="form-control" value="X-Api-Key" id="apiKeyHeader"
-								name="apiKeyHeader">
+								   th:value="${connectorApiKeyHeader}" name="apiKeyHeader">
 						</div>
 						<div class="form-group">
 							<label for="apiKey">API key:</label>
-							<input type="text" class="form-control" id="apiKey" name="apiKey">
+							<input type="text" class="form-control" id="apiKey"
+								   th:value="${connectorApiKey}" name="apiKey">
 						</div>
 					</div>
 				</div>
 				<div class="m-4 col-md-5">
 					<div class="form-group">
 						<label>
-							<h3>2nd Connector for Testing</h5>
+							<h3>2nd Connector for Testing</h3>
 						</label>
 					</div>
 					<div class="form-group">
 						<label for="preconfiguredConnectorUrl">Preconfigured Data provider Connector:</label>
 						<input type="text" class="form-control" id="preconfiguredConnectorUrl"
-							th:value="${connectorUrl}" name="preconfiguredConnectorUrl">
+							th:value="${preconfiguredConnectorUrl}" name="preconfiguredConnectorUrl">
 					</div>
 				</div>
 				<div class="col-md-12">
 					<button type="submit" id="submit" class="btn btn-primary">Check your connector status</button>
-					<div id="response" class="greenclass"></div>
+					<div id="response" th:utext="${result}" class="greenclass"></div>
 				</div>
 			</div>
 		</div>
@@ -169,7 +171,7 @@ SPDX-License-Identifier: Apache-2.0
 				<div class="m-4 col-md-5">
 					<div class="form-group">
 						<label>
-							<h3>2nd connector</h5>
+							<h3>2nd connector</h3>
 						</label>
 					</div>
 					<div class="form-group">

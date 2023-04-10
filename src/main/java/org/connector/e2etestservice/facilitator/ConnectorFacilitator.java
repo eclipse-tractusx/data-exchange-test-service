@@ -91,7 +91,7 @@ public class ConnectorFacilitator extends AbstractEDCStepsHelper {
             ResponseEntity<String> response = dataOfferCreationProxy.checkIfAssetIsPresent(
                     connectorURI,
                     getAuthHeader(connectorRequest.getApiKeyHeader(), connectorRequest.getApiKeyValue()),
-                    "200"
+                    "sample"
             );
             if (response.getStatusCode().value() == 200) {
                 log.info("Test Asset Present");

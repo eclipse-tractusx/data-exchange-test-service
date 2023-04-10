@@ -23,6 +23,7 @@ package org.connector.e2etestservice.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.connector.e2etestservice.Utils;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
 import org.connector.e2etestservice.model.OwnConnectorTestRequest;
 import org.connector.e2etestservice.service.TestConnectorService;
@@ -69,6 +70,9 @@ public class E2eTestController {
 	@PostMapping("/connector-test")
 	public ResponseEntity<Object> testConnector(@Valid @RequestBody ConnectorTestRequest connectorTestRequest) {
 		Map<String, String> result = new HashMap<>();
+
+		connectorTestRequest.setConnectorHost(Utils.removeLastSlashFromURL(connectorTestRequest.getConnectorHost()));
+
 		ConnectorTestRequest preconfiguredTestConnector = ConnectorTestRequest.builder().connectorHost(testConnectorUrl)
 				.apiKeyHeader(testConnectorApiKeyHeader).apiKeyValue(testConnectorApiKey).build();
 		boolean consumerTestResult = testConnectorService.testConnectorConnectivity(connectorTestRequest,
@@ -93,12 +97,12 @@ public class E2eTestController {
 			@Valid @RequestBody OwnConnectorTestRequest ownConnectorTestRequest) {
 		Map<String, String> result = new HashMap<>();
 		ConnectorTestRequest firstConnector = ConnectorTestRequest.builder()
-				.connectorHost(ownConnectorTestRequest.getFirstConnectorHost())
+				.connectorHost(Utils.removeLastSlashFromURL(ownConnectorTestRequest.getFirstConnectorHost()))
 				.apiKeyHeader(ownConnectorTestRequest.getFirstApiKeyHeader())
 				.apiKeyValue(ownConnectorTestRequest.getFirstApiKeyValue()).build();
 
 		ConnectorTestRequest secondConnector = ConnectorTestRequest.builder()
-				.connectorHost(ownConnectorTestRequest.getSecondConnectorHost())
+				.connectorHost(Utils.removeLastSlashFromURL(ownConnectorTestRequest.getSecondConnectorHost()))
 				.apiKeyHeader(ownConnectorTestRequest.getSecondApiKeyHeader())
 				.apiKeyValue(ownConnectorTestRequest.getSecondApiKeyValue()).build();
 		boolean consumerTestResult = testConnectorService.testConnectorConnectivity(secondConnector, firstConnector);
