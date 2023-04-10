@@ -21,6 +21,7 @@
 package org.connector.e2etestservice.controller;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.connector.e2etestservice.Utils;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
 import org.connector.e2etestservice.service.TestConnectorService;
@@ -30,6 +31,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -67,7 +69,15 @@ public class UIController {
     }
 
     @RequestMapping(value = "/testconnector", method = RequestMethod.POST)
-    public ModelAndView getIndexPageWithConnectorDetails(@Valid @RequestBody ConnectorTestRequest connectorTestRequest) {
+    public ModelAndView getIndexPageWithConnectorDetails(@NotBlank @RequestParam String connectorHost,
+                                                         @NotBlank @RequestParam String apiKeyHeader,
+                                                         @NotBlank @RequestParam String apiKeyValue) {
+
+        ConnectorTestRequest connectorTestRequest = ConnectorTestRequest.builder()
+                .connectorHost(connectorHost)
+                .apiKeyHeader(apiKeyHeader)
+                .apiKeyValue(apiKeyValue)
+                .build();
         ModelAndView model = new ModelAndView();
         model.setViewName("index");
 
