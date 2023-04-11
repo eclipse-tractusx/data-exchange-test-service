@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>org.connector</groupId>
 	<artifactId>e2etestservice</artifactId>
-	<version>0.1.1</version>
+	<version>0.1.5</version>
 	<name>e2etestservice</name>
 	<description>End to end data exchange test service</description>
 	<properties>
