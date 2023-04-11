@@ -22,6 +22,7 @@ Helm charts are provided inside https://github.com/eclipse-tractusx/data-exchang
           edchostname:  -> EDC connector Hostname 
           edcapikeyheader:   -> Header for EDC
           edcapikey:   -> key for EDC API
+          e2edetsurl:  -> End to end data exchange service URL
 
     d.) These secrets should be defined in Hashicorp vault
     e.) Deploy in a kubernetes cluster
