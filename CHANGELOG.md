@@ -22,9 +22,9 @@ NA
  - Added AUTHORS.md, CHANGELOG.md, CODE_OF_CONDUCT.md, CONTRIBUTING.md, INSTALL.md, NOTICE.md, SECURITY.md file
  - Added LICENSE file
  - Open api changes
- - Fetch preconfgiured connector url from properties file
+ - Fetch preconfigured connector url from properties file
  - Demo UI update and dependency issues resolved
- - Testconnector api changes for autosetup email support
+ - Test connector api changes for auto-setup email support
 
 ### Removed
  - Use of old deprecated methods after version update 
