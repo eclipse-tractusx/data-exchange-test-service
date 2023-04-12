@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 NA
 
 
-## [0.1.5] - 2023-04-11
+## [0.1.6] - 2023-04-11
 
 ### Added
 
@@ -22,9 +22,9 @@ NA
  - Added AUTHORS.md, CHANGELOG.md, CODE_OF_CONDUCT.md, CONTRIBUTING.md, INSTALL.md, NOTICE.md, SECURITY.md file
  - Added LICENSE file
  - Open api changes
- - Fetch preconfgiured connector url from properties file
+ - Fetch preconfigured connector url from properties file
  - Demo UI update and dependency issues resolved
- - Testconnector api changes for autosetup email support
+ - Test connector api changes for auto-setup email support
 
 ### Removed
  - Use of old deprecated methods after version update 
