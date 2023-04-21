@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 NA
 
+## [0.1.7] - 2023-04-19
+
+### Changed
+
+ - Spring boot version updated to 3.0.5
+ - Updated spring expression to 6.0.8
 
 ## [0.1.6] - 2023-04-11
 
