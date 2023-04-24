@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 NA
 
+## [0.1.8] - 2023-04-24
+
+### Fixed
+- Fixed spring security web veracode security by upgrading its version to 6.0.3
+
 ## [0.1.7] - 2023-04-19
 
 ### Changed
