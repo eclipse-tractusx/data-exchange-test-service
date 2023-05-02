@@ -8,6 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 NA
 
+
+## [0.1.9] - 2023-05-02
+
+### Added
+ - Added .tractusx file in the repo
+
+### Changed
+- Updated librabries and upgrade spring boot
+
+
 ## [0.1.8] - 2023-04-24
 
 ### Fixed
