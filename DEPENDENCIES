@@ -20,10 +20,10 @@ maven/mavencentral/io.micrometer/micrometer-observation/1.10.6, Apache-2.0, appr
 maven/mavencentral/io.swagger.core.v3/swagger-annotations-jakarta/2.2.8, Apache-2.0, approved, #5947
 maven/mavencentral/io.swagger.core.v3/swagger-core-jakarta/2.2.8, Apache-2.0, approved, #5929
 maven/mavencentral/io.swagger.core.v3/swagger-models-jakarta/2.2.8, Apache-2.0, approved, #5919
-maven/mavencentral/jakarta.activation/jakarta.activation-api/2.1.1, NOASSERTION, restricted, clearlydefined
-maven/mavencentral/jakarta.annotation/jakarta.annotation-api/2.1.1, EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0, restricted, clearlydefined
+maven/mavencentral/jakarta.activation/jakarta.activation-api/2.1.1, EPL-2.0 OR BSD-3-Clause OR GPL-2.0-only with Classpath-exception-2.0, approved, ee4j.jaf
+maven/mavencentral/jakarta.annotation/jakarta.annotation-api/2.1.1, EPL-2.0 OR GPL-2.0-only with Classpath-exception-2.0, approved, ee4j.ca
 maven/mavencentral/jakarta.validation/jakarta.validation-api/3.0.2, Apache-2.0, approved, clearlydefined
-maven/mavencentral/jakarta.xml.bind/jakarta.xml.bind-api/4.0.0, NOASSERTION, restricted, clearlydefined
+maven/mavencentral/jakarta.xml.bind/jakarta.xml.bind-api/4.0.0, BSD-3-Clause, approved, ee4j.jaxb
 maven/mavencentral/net.bytebuddy/byte-buddy-agent/1.12.23, Apache-2.0, approved, #1810
 maven/mavencentral/net.bytebuddy/byte-buddy/1.12.23, Apache-2.0 AND BSD-3-Clause, approved, #1811
 maven/mavencentral/net.minidev/accessors-smart/2.4.9, Apache-2.0, approved, #7515
@@ -80,14 +80,12 @@ maven/mavencentral/org.springframework.cloud/spring-cloud-context/4.0.1, Apache-
 maven/mavencentral/org.springframework.cloud/spring-cloud-openfeign-core/4.0.1, Apache-2.0, approved, #7305
 maven/mavencentral/org.springframework.cloud/spring-cloud-starter-openfeign/4.0.1, Apache-2.0, approved, #7302
 maven/mavencentral/org.springframework.cloud/spring-cloud-starter/4.0.1, Apache-2.0, approved, #7299
-maven/mavencentral/org.springframework.security/spring-security-core/6.0.3, Apache-2.0, approved, #7325
 maven/mavencentral/org.springframework.security/spring-security-crypto/6.0.3, Apache-2.0 AND ISC, approved, #7326
 maven/mavencentral/org.springframework.security/spring-security-rsa/1.0.11.RELEASE, Apache-2.0, approved, CQ20647
-maven/mavencentral/org.springframework.security/spring-security-web/6.0.3, Apache-2.0, approved, #7328
 maven/mavencentral/org.springframework/spring-aop/6.0.8, Apache-2.0, approved, #5940
 maven/mavencentral/org.springframework/spring-beans/6.0.8, Apache-2.0, approved, #5937
 maven/mavencentral/org.springframework/spring-context/6.0.8, Apache-2.0, approved, #5936
-maven/mavencentral/org.springframework/spring-core/6.0.7, Apache-2.0 AND BSD-3-Clause, approved, #5948
+maven/mavencentral/org.springframework/spring-core/6.0.8, Apache-2.0 AND BSD-3-Clause, approved, #5948
 maven/mavencentral/org.springframework/spring-expression/6.0.8, Apache-2.0, approved, #3284
 maven/mavencentral/org.springframework/spring-jcl/6.0.8, Apache-2.0, approved, #3283
 maven/mavencentral/org.springframework/spring-test/6.0.8, Apache-2.0, approved, #7003
