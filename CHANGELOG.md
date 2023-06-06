@@ -13,6 +13,9 @@ NA
 ### Added
  - Addition of configuration for stable env
 
+### Changed
+- Updated Code of Conduct file
+
 ## [0.1.9] - 2023-05-02
 
 ### Added
