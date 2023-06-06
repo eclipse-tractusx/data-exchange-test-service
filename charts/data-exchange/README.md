@@ -1,6 +1,6 @@
 # data-exchange
 
-![Version: 0.1.9](https://img.shields.io/badge/Version-0.1.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.9](https://img.shields.io/badge/AppVersion-0.1.9-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
 Data exchange service is used to exchange the data between connectors
 
@@ -24,7 +24,7 @@ Data exchange service is used to exchange the data between connectors
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` | Set the Image Pull Policy |
 | image.repository | string | `"ghcr.io/catenax-ng/tx-data-exchange-test-service/dataexchange"` | Image to use for deploying an application |
-| image.tag | string | `""` | Image tage is defined in chart appVersion. |
+| image.tag | string | `"1.0.0-STABLE"` | Image tage is defined in chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations."cert-manager.io/cluster-issuer" | string | `"letsencrypt-prod"` |  |
 | ingress.annotations."nginx.ingress.kubernetes.io/use-regex" | string | `"true"` |  |

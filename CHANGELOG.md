@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 NA
 
+## [1.0.0] - 2023-06-07
+
+### Added
+ - Addition of configuration for stable env
 
 ## [0.1.9] - 2023-05-02
 
