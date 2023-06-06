@@ -24,7 +24,7 @@ Data exchange service is used to exchange the data between connectors
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` | Set the Image Pull Policy |
 | image.repository | string | `"ghcr.io/catenax-ng/tx-data-exchange-test-service/dataexchange"` | Image to use for deploying an application |
-| image.tag | string | `"1.0.0-STABLE"` | Image tage is defined in chart appVersion. |
+| image.tag | string | `""` | Image tage is defined in chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations."cert-manager.io/cluster-issuer" | string | `"letsencrypt-prod"` |  |
 | ingress.annotations."nginx.ingress.kubernetes.io/use-regex" | string | `"true"` |  |
