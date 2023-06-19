@@ -3,10 +3,10 @@ maven/mavencentral/ch.qos.logback/logback-core/1.4.7, EPL-1.0 OR LGPL-2.1-only, 
 maven/mavencentral/com.fasterxml.jackson.core/jackson-annotations/2.15.0, Apache-2.0, approved, #7947
 maven/mavencentral/com.fasterxml.jackson.core/jackson-core/2.15.0, MIT AND Apache-2.0, approved, #7932
 maven/mavencentral/com.fasterxml.jackson.core/jackson-databind/2.15.0, Apache-2.0, approved, #7934
-maven/mavencentral/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.15.0, Apache-2.0, restricted, clearlydefined
-maven/mavencentral/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/2.15.0, Apache-2.0, restricted, clearlydefined
+maven/mavencentral/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.15.0, Apache-2.0, approved, #8802
+maven/mavencentral/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/2.15.0, Apache-2.0, approved, #8808
 maven/mavencentral/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.15.0, Apache-2.0, approved, #7930
-maven/mavencentral/com.fasterxml.jackson.module/jackson-module-parameter-names/2.15.0, Apache-2.0, restricted, clearlydefined
+maven/mavencentral/com.fasterxml.jackson.module/jackson-module-parameter-names/2.15.0, Apache-2.0, approved, #8803
 maven/mavencentral/com.fasterxml/classmate/1.5.1, Apache-2.0, approved, clearlydefined
 maven/mavencentral/io.github.classgraph/classgraph/4.8.149, MIT, approved, CQ22530
 maven/mavencentral/io.github.openfeign.form/feign-form-spring/3.8.0, Apache-2.0, approved, clearlydefined
@@ -24,7 +24,7 @@ maven/mavencentral/jakarta.validation/jakarta.validation-api/3.0.2, Apache-2.0, 
 maven/mavencentral/jakarta.xml.bind/jakarta.xml.bind-api/4.0.0, BSD-3-Clause, approved, ee4j.jaxb
 maven/mavencentral/org.apache.commons/commons-lang3/3.12.0, Apache-2.0, approved, clearlydefined
 maven/mavencentral/org.apache.logging.log4j/log4j-api/2.20.0, Apache-2.0, approved, clearlydefined
-maven/mavencentral/org.apache.logging.log4j/log4j-to-slf4j/2.20.0, Apache-2.0, restricted, clearlydefined
+maven/mavencentral/org.apache.logging.log4j/log4j-to-slf4j/2.20.0, Apache-2.0, approved, #8799
 maven/mavencentral/org.apache.tomcat.embed/tomcat-embed-core/10.1.8, Apache-2.0 AND (EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0) AND (CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0) AND W3C AND CC0-1.0, approved, #5949
 maven/mavencentral/org.apache.tomcat.embed/tomcat-embed-el/10.1.8, Apache-2.0, approved, #6997
 maven/mavencentral/org.apache.tomcat.embed/tomcat-embed-websocket/10.1.8, Apache-2.0, approved, #7920
@@ -45,7 +45,7 @@ maven/mavencentral/org.springframework.boot/spring-boot-autoconfigure/3.1.0, Apa
 maven/mavencentral/org.springframework.boot/spring-boot-starter-aop/3.1.0, Apache-2.0, approved, clearlydefined
 maven/mavencentral/org.springframework.boot/spring-boot-starter-json/3.1.0, Apache-2.0, approved, clearlydefined
 maven/mavencentral/org.springframework.boot/spring-boot-starter-logging/3.1.0, Apache-2.0, approved, clearlydefined
-maven/mavencentral/org.springframework.boot/spring-boot-starter-thymeleaf/3.1.0, , restricted, clearlydefined
+maven/mavencentral/org.springframework.boot/spring-boot-starter-thymeleaf/3.1.0, Apache-2.0, approved, clearlydefined
 maven/mavencentral/org.springframework.boot/spring-boot-starter-tomcat/3.1.0, Apache-2.0, approved, clearlydefined
 maven/mavencentral/org.springframework.boot/spring-boot-starter-validation/3.1.0, Apache-2.0, approved, clearlydefined
 maven/mavencentral/org.springframework.boot/spring-boot-starter-web/3.1.0, Apache-2.0, approved, clearlydefined
