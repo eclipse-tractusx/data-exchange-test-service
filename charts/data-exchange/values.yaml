@@ -90,7 +90,7 @@ ingress:
     secretName: tls-secret
     hosts: ""
 
-drs:
+dataex:
   secret:
     # -- EDC connector Hostname
     edchostname: ""
