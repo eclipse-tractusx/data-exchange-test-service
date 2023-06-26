@@ -39,11 +39,11 @@ ingress:
       
 resources:
   limits:
-    cpu: 500m
+    cpu: 600m
     memory: 400Mi
   requests:
     cpu: 200m
-    memory: 300Mi
+    memory: 400Mi
     
 dataex:
   secret:
