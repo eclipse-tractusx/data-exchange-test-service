@@ -33,7 +33,7 @@ description: Data exchange service is used to exchange the data between connecto
 type: application
 
 sources:
-  -  https://github.com/eclipse-tractusx/data-exchange-test-service
+  - https://github.com/eclipse-tractusx/data-exchange-test-service
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
