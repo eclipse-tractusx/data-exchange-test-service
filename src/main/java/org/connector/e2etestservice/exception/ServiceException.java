@@ -1,6 +1,6 @@
 /********************************************************************************
- * Copyright (c) 2023 T-Systems International GmbH
- * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2022, 2023 T-Systems International GmbH
+ * Copyright (c) 2022, 2023 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -18,19 +18,17 @@
  * SPDX-License-Identifier: Apache-2.0
  ********************************************************************************/
 
-package org.connector.e2etestservice.model.asset;
+package org.connector.e2etestservice.exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Builder
-public class AssetEntryRequest {
-    private Asset asset;
-    private DataAddressRequest dataAddress;
+@Slf4j
+public class ServiceException extends RuntimeException {
 
+	private static final long serialVersionUID = 1L;
+
+	public ServiceException(String exceptionstr) {
+		super(exceptionstr);
+		log.error(exceptionstr);
+	}
 }

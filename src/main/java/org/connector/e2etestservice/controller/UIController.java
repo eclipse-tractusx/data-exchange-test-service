@@ -27,13 +27,10 @@ import org.connector.e2etestservice.service.TestConnectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class UIController {
@@ -57,7 +54,7 @@ public class UIController {
     }
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ModelAndView getIndexPage() {
         ModelAndView model = new ModelAndView();
         model.setViewName("index");
@@ -66,7 +63,7 @@ public class UIController {
         return model;
     }
 
-    @RequestMapping(value = "/testconnector", method = RequestMethod.POST)
+    @PostMapping(value = "/testconnector")
     public ModelAndView getIndexPageWithConnectorDetails(@NotBlank @RequestParam String connectorHost,
                                                          @NotBlank @RequestParam String apiKeyHeader,
                                                          @NotBlank @RequestParam String apiKeyValue) {
@@ -78,9 +75,6 @@ public class UIController {
                 .build();
         ModelAndView model = new ModelAndView();
         model.setViewName("index");
-
-        // test connector
-        Map<String, String> result = new HashMap<>();
 
         connectorTestRequest.setConnectorHost(Utils.removeLastSlashFromURL(connectorTestRequest.getConnectorHost()));
 

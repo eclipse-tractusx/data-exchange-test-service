@@ -20,10 +20,12 @@
 
 package org.connector.e2etestservice.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.connector.e2etestservice.facilitator.ConnectorFacilitator;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
-import org.connector.e2etestservice.model.contractoffers.ContractOffersCatalogResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -49,10 +51,15 @@ public class TestConnectorService {
 			dataOfferService.createDataOfferForTesting(providerConnectorRequest);
 
 			// 2. Fetch newly created data offer from preconfigured test connector
-			ContractOffersCatalogResponse contractOfferCatalog = connectorFacilitator
-					.getContractOfferFromConnector(consumerTestConnector, providerConnectorRequest);
+			ObjectNode catalogRequestBody = dataOfferService.getCatalogRequestBody(
+					providerConnectorRequest.getConnectorHost()+"/api/v1/dsp"
+			);
+			ResponseEntity<String> contractOfferCatalog = connectorFacilitator
+					.getContractOfferFromConnector(consumerTestConnector, catalogRequestBody);
 
-			return contractOfferCatalog != null && !contractOfferCatalog.getContractOffers().isEmpty();
+			ObjectNode response = (ObjectNode) new ObjectMapper().readTree(contractOfferCatalog.getBody());
+
+			return response != null && !response.get("dcat:dataset").isEmpty();
 
 		} catch (Exception e) {
 			log.info("Exception occurred while testing connector as a provider" + e);

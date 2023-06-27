@@ -23,20 +23,20 @@ package org.connector.e2etestservice.api;
 import java.net.URI;
 import java.util.Map;
 
-import org.connector.e2etestservice.model.contractoffers.ContractOffersCatalogResponse;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "QueryData", url = "placeholder")
 public interface QueryDataOffersProxy {
 
-    @GetMapping(value = "/data/catalog")
-    public ContractOffersCatalogResponse getContractOffersCatalog(
+    @PostMapping(value = "/data/v2/catalog/request")
+    public ResponseEntity<String> getContractOffersCatalog(
             URI baseUrl,
             @RequestHeader Map<String, String> requestHeader,
-            @RequestParam String providerUrl,
-            @RequestParam Integer limit
+            @RequestBody ObjectNode catalogRequestBody
     );
 }

@@ -20,14 +20,10 @@
 
 package org.connector.e2etestservice.service;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.connector.e2etestservice.facilitator.ConnectorFacilitator;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
-import org.connector.e2etestservice.model.asset.AssetEntryRequest;
-import org.connector.e2etestservice.model.asset.AssetFactory;
-import org.connector.e2etestservice.model.contractDefinition.ContractDefinitionFactory;
-import org.connector.e2etestservice.model.contractDefinition.ContractDefinitionRequest;
-import org.connector.e2etestservice.model.policies.PolicyDefinitionRequest;
-import org.connector.e2etestservice.model.policies.PolicyFactory;
+import org.connector.e2etestservice.model.EdcTemplateFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,17 +32,12 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class DataOfferService {
-	private AssetFactory assetFactory;
-	private PolicyFactory policyFactory;
-	private ContractDefinitionFactory contractDefinitionFactory;
+	private EdcTemplateFactory edcTemplateFactory;
 	private ConnectorFacilitator connectorFacilitator;
 
 	@Autowired
-	public DataOfferService(AssetFactory assetFactory, PolicyFactory policyFactory,
-			ContractDefinitionFactory contractDefinitionFactory, ConnectorFacilitator connectorFacilitator) {
-		this.assetFactory = assetFactory;
-		this.policyFactory = policyFactory;
-		this.contractDefinitionFactory = contractDefinitionFactory;
+	public DataOfferService(EdcTemplateFactory edcTemplateFactory, ConnectorFacilitator connectorFacilitator) {
+		this.edcTemplateFactory = edcTemplateFactory;
 		this.connectorFacilitator = connectorFacilitator;
 	}
 
@@ -54,27 +45,22 @@ public class DataOfferService {
 		try {
 			// 1. check if already present and then Create Asset
 			if (!connectorFacilitator.isTestAssetPresent(companyConnectorRequest)) {
-				AssetEntryRequest assetEntryRequest = assetFactory.generateDummyAssetObject();
+				ObjectNode assetEntryRequest = edcTemplateFactory.
+						generateDummyEdcRequestObject("/edc-request-template/sample-asset.json");
 				connectorFacilitator.createAsset(companyConnectorRequest, assetEntryRequest);
 			}
 
 			// 2. check if already present and then Create policies
-			if (!connectorFacilitator.isTestPolicyPresent(companyConnectorRequest, "AccessPolicySample")) {
-				PolicyDefinitionRequest accessPolicy = policyFactory
-						.generateDummyAccessPolicyRequest("AccessPolicySample");
-				connectorFacilitator.createPolicy(companyConnectorRequest, accessPolicy);
-			}
-
-			if (!connectorFacilitator.isTestPolicyPresent(companyConnectorRequest, "UsagePolicySample")) {
-				PolicyDefinitionRequest usagePolicy = policyFactory.generateDummyUsagePolicyRequest("UsagePolicySample");
-				connectorFacilitator.createPolicy(companyConnectorRequest, usagePolicy);
+			if (!connectorFacilitator.isTestPolicyPresent(companyConnectorRequest, "policysample")) {
+				ObjectNode policyRequest = edcTemplateFactory.
+						generateDummyEdcRequestObject("/edc-request-template/sample-policy.json");
+				connectorFacilitator.createPolicy(companyConnectorRequest, policyRequest);
 			}
 
 			// 3. check if already present and then Create contract definition
 			if (!connectorFacilitator.isTestContractDefinitionPresent(companyConnectorRequest)) {
-				ContractDefinitionRequest contractDefinitionRequest = contractDefinitionFactory
-						.getDummyContractDefinitionRequest("ContractDefinitionSample", "AccessPolicySample", "UsagePolicySample",
-								"sample");
+				ObjectNode contractDefinitionRequest = edcTemplateFactory.
+						generateDummyEdcRequestObject("/edc-request-template/sample-contract-definition.json");
 				connectorFacilitator.createContractDefinition(companyConnectorRequest, contractDefinitionRequest);
 			}
 
@@ -82,5 +68,11 @@ public class DataOfferService {
 			log.info("Exception occurred while creating test data offer for connector: " + e);
 		}
 
+	}
+
+	public ObjectNode getCatalogRequestBody(String providerProtocolUrl) {
+		return edcTemplateFactory.
+				generateCatalogRequestObject(
+						"/edc-request-template/sample-catalog.json", providerProtocolUrl);
 	}
 }
