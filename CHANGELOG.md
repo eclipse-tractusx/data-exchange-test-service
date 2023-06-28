@@ -5,19 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
-
 NA
 
 ## [1.0.3] - 2023-06-28
 
 ### Changed
- - To support EDC 0.4.1
+ - Data exchange test service to support EDC 0.4.1
 
 ## [1.0.2] - 2023-06-26
 
 ### Added
  - Addition of helm lint
-
+ - 
 ## [1.0.1] - 2023-06-15
 
 ### Fixed
