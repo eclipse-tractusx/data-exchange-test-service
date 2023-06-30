@@ -1,0 +1,19 @@
+{
+	"@context": {},
+	"asset": {
+		"@type": "Asset",
+		"@id": "sample",
+		"properties": {
+			"asset:prop:id": "sample",
+			"asset:prop:type": "data.core.digitalTwinRegistry",
+			"asset:prop:name": "Welcome to Catena-X",
+			"asset:prop:contenttype": "application/json",
+			"asset:prop:policy-id": "use-eu"
+		}
+	},
+	"dataAddress": {
+		"@type": "DataAddress",
+		"type": "HttpData",
+		"baseUrl": "https://jsonplaceholder.typicode.com/todos/3"
+	}
+}

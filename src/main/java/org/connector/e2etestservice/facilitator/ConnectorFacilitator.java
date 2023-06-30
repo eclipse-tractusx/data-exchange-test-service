@@ -22,15 +22,11 @@ package org.connector.e2etestservice.facilitator;
 
 import java.net.URI;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.connector.e2etestservice.api.DataOfferCreationProxy;
 import org.connector.e2etestservice.api.QueryDataOffersProxy;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
-import org.connector.e2etestservice.model.asset.AssetEntryRequest;
-import org.connector.e2etestservice.model.contractDefinition.ContractDefinitionRequest;
-import org.connector.e2etestservice.model.contractoffers.ContractOffersCatalogResponse;
-import org.connector.e2etestservice.model.policies.PolicyDefinitionRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -45,35 +41,29 @@ public class ConnectorFacilitator extends AbstractEDCStepsHelper {
 
     private DataOfferCreationProxy dataOfferCreationProxy;
 
-    private String idsPath;
-
     @Autowired
     public ConnectorFacilitator(QueryDataOffersProxy queryDataOffersProxy,
-                                DataOfferCreationProxy dataOfferCreationProxy,
-                                @Value("${edc.ids.path}") String idsPath) {
+                                DataOfferCreationProxy dataOfferCreationProxy) {
         this.queryDataOffersProxy = queryDataOffersProxy;
         this.dataOfferCreationProxy = dataOfferCreationProxy;
-        this.idsPath = idsPath;
     }
 
 
     @SneakyThrows
-    public ContractOffersCatalogResponse getContractOfferFromConnector(ConnectorTestRequest consumer,
-                                                                       ConnectorTestRequest provider) {
-        ContractOffersCatalogResponse contractOfferCatalog = null;
+    public ResponseEntity<String> getContractOfferFromConnector(ConnectorTestRequest consumer,
+                                                                       ObjectNode catalogRequestBody) {
+
         URI companyConnectorURI = URI.create(consumer.getConnectorHost());
-        contractOfferCatalog = queryDataOffersProxy.getContractOffersCatalog(
+        return queryDataOffersProxy.getContractOffersCatalog(
                 companyConnectorURI,
                 getAuthHeader(consumer.getApiKeyHeader(), consumer.getApiKeyValue()),
-                provider.getConnectorHost() + idsPath,
-                10
+                catalogRequestBody
         );
-        return contractOfferCatalog;
     }
 
     @SneakyThrows
     public ResponseEntity<String> createAsset(ConnectorTestRequest connectorRequest,
-                                              AssetEntryRequest assetEntryRequest) {
+                                              ObjectNode assetEntryRequest) {
         ResponseEntity<String> response = null;
         URI connectorURI = URI.create(connectorRequest.getConnectorHost());
         response = dataOfferCreationProxy.createAsset(
@@ -108,7 +98,7 @@ public class ConnectorFacilitator extends AbstractEDCStepsHelper {
 
     @SneakyThrows
     public ResponseEntity<String> createPolicy(ConnectorTestRequest connectorRequest,
-                                              PolicyDefinitionRequest policyDefinitionRequest) {
+                                              ObjectNode policyDefinitionRequest) {
         ResponseEntity<String> response = null;
         URI connectorURI = URI.create(connectorRequest.getConnectorHost());
         response = dataOfferCreationProxy.createPolicy(
@@ -143,7 +133,7 @@ public class ConnectorFacilitator extends AbstractEDCStepsHelper {
 
     @SneakyThrows
     public ResponseEntity<String> createContractDefinition(ConnectorTestRequest connectorRequest,
-                                               ContractDefinitionRequest contractDefinitionRequest) {
+                                                           ObjectNode contractDefinitionRequest) {
         ResponseEntity<String> response = null;
         URI connectorURI = URI.create(connectorRequest.getConnectorHost());
         response = dataOfferCreationProxy.createContractDefinition(
@@ -161,7 +151,7 @@ public class ConnectorFacilitator extends AbstractEDCStepsHelper {
             ResponseEntity<String> response = dataOfferCreationProxy.checkIfContractDefinitionIsPresent(
                     connectorURI,
                     getAuthHeader(connectorRequest.getApiKeyHeader(), connectorRequest.getApiKeyValue()),
-                    "ContractDefinition200"
+                    "samplecontract"
             );
             if(response.getStatusCode().value() == 200) {
                 log.info("Test contract definition is Present");

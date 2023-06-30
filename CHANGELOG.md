@@ -7,10 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 NA
 
-### Added
+## [1.0.3] - 2023-06-28
+
+### Changed
+ - Data exchange test service to support EDC 0.4.1
+
 ## [1.0.2] - 2023-06-26
+
+### Added
  - Addition of helm lint
- 
+ - 
 ## [1.0.1] - 2023-06-15
 
 ### Fixed
