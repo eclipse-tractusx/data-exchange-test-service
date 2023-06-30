@@ -1,6 +1,6 @@
 # data-exchange
 
-![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.3](https://img.shields.io/badge/AppVersion-1.0.3-informational?style=flat-square)
+![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.3](https://img.shields.io/badge/AppVersion-1.0.3-informational?style=flat-square)
 
 Data exchange service is used to exchange the data between connectors
 
@@ -17,10 +17,10 @@ Data exchange service is used to exchange the data between connectors
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| drs.secret.e2edetsurl | string | `""` | URL for E2E data exchange test service |
-| drs.secret.edcapikey | string | `""` | Key for EDC API |
-| drs.secret.edcapikeyheader | string | `""` | Header for EDC |
-| drs.secret.edchostname | string | `""` | EDC connector Hostname  |
+| dataex.secret.e2edetsurl | string | `""` | URL for E2E data exchange test service |
+| dataex.secret.edcapikey | string | `""` | Key for EDC API |
+| dataex.secret.edcapikeyheader | string | `""` | Header for EDC |
+| dataex.secret.edchostname | string | `""` | EDC connector Hostname |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` | Set the Image Pull Policy |
 | image.repository | string | `"ghcr.io/catenax-ng/tx-data-exchange-test-service/dataexchange"` | Image to use for deploying an application |
@@ -40,10 +40,10 @@ Data exchange service is used to exchange the data between connectors
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` | Number of Replicas for pods |
-| resources.limits.cpu | string | `"500m"` |  |
+| resources.limits.cpu | string | `"600m"` |  |
 | resources.limits.memory | string | `"400Mi"` |  |
 | resources.requests.cpu | string | `"200m"` |  |
-| resources.requests.memory | string | `"300Mi"` |  |
+| resources.requests.memory | string | `"400Mi"` |  |
 | securityContext.allowPrivilegeEscalation | bool | `false` | Controls whether a process can gain more privileges |
 | securityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | service.port | int | `80` | Port details for sevice |
