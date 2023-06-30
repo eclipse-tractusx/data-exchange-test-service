@@ -17,7 +17,8 @@ testing of the connector as a Consumer and Provider.
 
 ### Non-functional requirements
 
-*   The E2E-DETS will have to be: accessible, easy to use, secure, efficient etc.
+* The E2E-DETS will have to be: accessible, easy to use, secure, efficient etc.
+* The E2E-DETS will only support EDC Version 0.4.1
 
 ### Quality Goals
 

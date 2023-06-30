@@ -35,6 +35,8 @@ Store all above values in application properties file.
 ## API authentication
 Currently, authentication is not supported for this service
 
+### EDC Version Supported
+- 0.4.1
 
 ## Installation Steps
 
