@@ -3,9 +3,8 @@
 	"protocol": "dataspace-protocol-http",
 	"providerUrl": "%s",
 	"querySpec": {
+		"offset": 0,
 		"limit": 1,
-		"sortField": "",
-		"criterion": "",
 		"filterExpression": {
 			"operandLeft": "https://w3id.org/edc/v0.0.1/ns/id",
 			"operator": "=",
