@@ -4,11 +4,11 @@
 		"@type": "Asset",
 		"@id": "sample",
 		"properties": {
-			"asset:prop:id": "sample",
-			"asset:prop:type": "data.core.digitalTwinRegistry",
-			"asset:prop:name": "Welcome to Catena-X",
-			"asset:prop:contenttype": "application/json",
-			"asset:prop:policy-id": "use-eu"
+			"id": "sample",
+			"name": "Welcome to Catena-X",
+			"contenttype": "application/json",
+			"policy-id": "use-eu",
+			"type": "data.core.digitalTwin.submodel"
 		}
 	},
 	"dataAddress": {
