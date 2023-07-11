@@ -10,8 +10,8 @@ This service will help for testing the connectors and also can be used for healt
 
 ### Software Version
 ```shell
-Latest Helm version is v1.0.1
-Latest Application version is v1.0.1
+Latest Helm version is v1.0.4
+Latest Application version is v1.0.4
 ```
 ### How to run
 
@@ -35,6 +35,8 @@ Store all above values in application properties file.
 ## API authentication
 Currently, authentication is not supported for this service
 
+### EDC Version Supported
+- 0.4.1
 
 ## Installation Steps
 

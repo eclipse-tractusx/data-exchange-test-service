@@ -69,7 +69,7 @@ service:
   port: 80
     # -- Container Port details for sevice
   targetPort: 8080
-  
+
 ingress:
     # -- If you want to enable or disable the ingress
   enabled: false
@@ -90,9 +90,9 @@ ingress:
     secretName: tls-secret
     hosts: ""
 
-drs:
+dataex:
   secret:
-    # -- EDC connector Hostname 
+    # -- EDC connector Hostname
     edchostname: ""
     # -- Header for EDC
     edcapikeyheader: ""
@@ -101,25 +101,13 @@ drs:
     # -- URL for E2E data exchange test service
     e2edetsurl: ""
 
-    
 resources:
   limits:
-    cpu: 500m
+    cpu: 600m
     memory: 400Mi
   requests:
     cpu: 200m
-    memory: 300Mi
-    
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+    memory: 400Mi
 
 autoscaling:
   enabled: false
