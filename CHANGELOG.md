@@ -7,6 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 NA
 
+## [1.0.5] - 2023-07-11
+
+### Changed
+ - Data exchange test service to support EDC 0.5.x
+
 ## [1.0.4] - 2023-07-06
 
 ### Changed
