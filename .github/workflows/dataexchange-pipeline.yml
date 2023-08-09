@@ -37,7 +37,7 @@ on:
   
 env:
   IMAGE_NAMESPACE: "tractusx"
-  IMAGE_NAME: "dataexchange"
+  IMAGE_NAME: "dataex"
 
 jobs:
   docker:
