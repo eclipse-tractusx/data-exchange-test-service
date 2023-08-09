@@ -71,7 +71,7 @@ jobs:
         if: always()
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "ghcr.io/catenax-ng/tx-data-exchange-test-service/dataex:latest"
+          image-ref: "tractusx/data-exchange-test-service:latest"
           format: "sarif"
           output: "trivy-results2.sarif"
           exit-code: "1"
