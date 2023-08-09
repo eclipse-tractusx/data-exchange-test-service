@@ -7,6 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 NA
 
+## [1.0.6] - 2023-08-09
+
+### Changed
+ - Updated the image to create in docker hub
+ 
 ## [1.0.5] - 2023-07-11
 
 ### Changed
