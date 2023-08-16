@@ -1,6 +1,6 @@
 # data-exchange
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.6](https://img.shields.io/badge/AppVersion-1.0.6-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.7](https://img.shields.io/badge/AppVersion-1.0.7-informational?style=flat-square)
 
 Data exchange service is used to exchange the data between connectors
 
@@ -23,7 +23,7 @@ Data exchange service is used to exchange the data between connectors
 | dataex.secret.edchostname | string | `""` | EDC connector Hostname |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` | Set the Image Pull Policy |
-| image.repository | string | `"ghcr.io/catenax-ng/tx-data-exchange-test-service/dataexchange"` | Image to use for deploying an application |
+| image.repository | string | `"tractusx/data-exchange-test-service"` | Image to use for deploying an application |
 | image.tag | string | `""` | Image tage is defined in chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations."cert-manager.io/cluster-issuer" | string | `"letsencrypt-prod"` |  |

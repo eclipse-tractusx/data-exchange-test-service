@@ -7,6 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 NA
 
+## [1.0.6] - 2023-08-16
+
+### Changed
+ - Updated the image tag in trivy
+ 
 ## [1.0.6] - 2023-08-09
 
 ### Changed
