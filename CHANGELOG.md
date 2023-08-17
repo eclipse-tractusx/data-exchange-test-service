@@ -7,7 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 NA
 
-## [1.0.6] - 2023-08-16
+## [1.0.8] - 2023-08-17
+
+### Changed
+ - Updated Lint chart workflow
+ 
+## [1.0.7] - 2023-08-16
 
 ### Changed
  - Updated the image tag in trivy
