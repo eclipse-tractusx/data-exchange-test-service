@@ -44,7 +44,7 @@ This application provides container images for demonstration purposes. The base 
 
 ## Notice for Docker image
 
-DockerHub: [https://hub.docker.com/r/tractusx/dataex](https://hub.docker.com/r/tractusx/dataex)  <br />
+DockerHub: [https://hub.docker.com/r/tractusx/data-exchange-test-service](https://hub.docker.com/r/tractusx/data-exchange-test-service)  <br />
 Eclipse Tractus-X product(s) installed within the image:
 
 __Data Exchange Test Service__
