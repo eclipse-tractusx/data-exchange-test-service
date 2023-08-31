@@ -1,5 +1,14 @@
 # Arc 42 End to End Data Exchange Test 
 
+## NOTICE
+
+This work is licensed under the [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+- SPDX-License-Identifier: Apache-2.0
+- SPDX-FileCopyrightText: 2023 T-Systems International GmbH
+- SPDX-FileCopyrightText: 2023 Contributors to the Eclipse Foundation
+- Source URL: https://github.com/eclipse-tractusx/data-exchange-test-service
+
 ## Introduction and Goals
 
 E2E Data Exchange Test Service(E2E-DETS) is a Catena-X Service, 
@@ -98,11 +107,12 @@ Responses:
 | 200  | Connector is working as a consumer and provider |
 | 500  | Connector is not working properly               |
 
-## Deployment View
+## **Deployment View**
 
-In Catena-X we use [ARGO-CD](https://confluence.catena-x.net/display/ARTI/ArgoCD+deployment+tool) for deployment
+<br />
+For deployment, we are using [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and Helm. The Helm configuration can be found in folder "charts" in respective repositories.
 
-[README.md](https://github.com/catenax-ng/tx-data-exchange-test-service/blob/main/README.md) describe the deployment process
+<br />
 
 ## Glossary
 
