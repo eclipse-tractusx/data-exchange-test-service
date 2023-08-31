@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.connector</groupId>
-	<artifactId>e2etestservice</artifactId>
-	<version>1.0.8</version>
-	<name>e2etestservice</name>
+	<artifactId>data-exchange-test-service</artifactId>
+	<version>1.0.9</version>
+	<name>data-exchange-test-service</name>
 	<description>End to end data exchange test service</description>
 	<properties>
 		<java.version>17</java.version>

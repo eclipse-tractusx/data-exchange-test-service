@@ -7,10 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 NA
 
+## [1.0.9] - 2023-08-31
+
+### Changed
+ - Updated documentation
+ - Updated USERIDs when specifying the user for the Docker image
+ - Updated Dockefile for image creation
+ - Updated deployment with runAsUser
+ - Updated the workflow for helm lint
+
+### Removed
+ - Removed values feom default values.yaml
+
 ## [1.0.8] - 2023-08-23
 
 ### Changed
- - Updated the hem lint
+ - Updated the helm lint
  
 ## [1.0.7] - 2023-08-16
 
