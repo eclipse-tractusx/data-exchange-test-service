@@ -1,6 +1,6 @@
 # data-exchange
 
-![Version: 1.0.8](https://img.shields.io/badge/Version-1.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.8](https://img.shields.io/badge/AppVersion-1.0.8-informational?style=flat-square)
+![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.9](https://img.shields.io/badge/AppVersion-1.0.9-informational?style=flat-square)
 
 Data exchange service is used to exchange the data between connectors
 
@@ -26,15 +26,14 @@ Data exchange service is used to exchange the data between connectors
 | image.repository | string | `"tractusx/data-exchange-test-service"` | Image to use for deploying an application |
 | image.tag | string | `""` | Image tage is defined in chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
-| ingress.annotations."cert-manager.io/cluster-issuer" | string | `"letsencrypt-prod"` |  |
-| ingress.annotations."nginx.ingress.kubernetes.io/use-regex" | string | `"true"` |  |
+| ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` | a reference to an Ingress Class resource that contains additional configuration including the name of the controller that should implement the class. |
 | ingress.enabled | bool | `false` | If you want to enable or disable the ingress |
 | ingress.hosts[0] | object | `{"host":"","paths":[{"path":"/","pathType":"ImplementationSpecific"}]}` | Host of the application on which application runs |
 | ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` | ImplementationSpecific path type matching is up to the IngressClass. Implementations can treat this as a separate pathType or treat it identically to Prefix or Exact path types. |
 | ingress.tls.enabled | bool | `false` |  |
 | ingress.tls.hosts | string | `""` |  |
-| ingress.tls.secretName | string | `"tls-secret"` |  |
+| ingress.tls.secretName | string | `""` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
@@ -46,6 +45,7 @@ Data exchange service is used to exchange the data between connectors
 | resources.requests.memory | string | `"400Mi"` |  |
 | securityContext.allowPrivilegeEscalation | bool | `false` | Controls whether a process can gain more privileges |
 | securityContext.capabilities.drop[0] | string | `"ALL"` |  |
+| securityContext.runAsUser | int | `1000` |  |
 | service.port | int | `80` | Port details for sevice |
 | service.targetPort | int | `8080` | Container Port details for sevice |
 | service.type | string | `"ClusterIP"` | Type of service |
