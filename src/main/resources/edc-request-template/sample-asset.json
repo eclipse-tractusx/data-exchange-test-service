@@ -12,8 +12,7 @@
 		}
 	},
 	"dataAddress": {
-		"@type": "DataAddress",
-		"type": "HttpData",
+		"type": "HttpProxy",
 		"baseUrl": "https://jsonplaceholder.typicode.com/todos/3"
 	}
 }
