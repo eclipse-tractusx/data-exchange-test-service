@@ -60,7 +60,7 @@ securityContext:
     - ALL
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
-  # runAsUser: 1000
+  runAsUser: 1000
 
 service:
     # -- Type of service
@@ -75,9 +75,7 @@ ingress:
   enabled: false
     # -- a reference to an Ingress Class resource that contains additional configuration including the name of the controller that should implement the class.
   className: ""
-  annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  annotations: {}
   hosts:
     # -- Host of the application on which application runs
     - host: ""
@@ -87,7 +85,7 @@ ingress:
           pathType: ImplementationSpecific
   tls:
     enabled: false
-    secretName: tls-secret
+    secretName: ""
     hosts: ""
 
 dataex:
