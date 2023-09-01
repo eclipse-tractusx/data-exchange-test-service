@@ -27,7 +27,8 @@ on:
     branches: [main]
   pull_request:
     paths:
-      - 'charts/**'
+      - 'charts/**'   
+  workflow_dispatch:
     inputs:
       node_image:
         description: 'kindest/node image for k8s kind cluster'
@@ -36,8 +37,8 @@ on:
         required: false
         type: string
       upgrade_from:
-        description: 'portal chart version to upgrade from'
-        # portal version from 3.1 release
+        description: 'Data exchange test service chart version to upgrade from'
+        # DETS version from 3.1 release
         default: '1.0.8'
         required: false
         type: string
@@ -93,11 +94,11 @@ jobs:
       - name: Run chart-testing (install)
         run: ct install --charts charts/data-exchange --config charts/chart-testing-config.yaml --helm-extra-set-args "--set=image.tag=testing --set=image.repository=kind-registry:5000/data-exchange-test-service"
         if: ${{ env.CHART_CHANGED == 'true' }}
-              # Upgrade the released chart version with the locally available chart
-              # default value for event_name != workflow_dispatch
-            - name: Run helm upgrade
-              run: |
-                helm repo add tractusx-dev https://eclipse-tractusx.github.io/charts/dev
-                helm install dataex tractusx-dev/data-exchange
-                helm upgrade dataex charts/data-exchange
-              if: github.event_name != 'pull_request' || steps.list-changed.outputs.changed == 'true'
+        # Upgrade the released chart version with the locally available chart
+        # default value for event_name != workflow_dispatch
+      - name: Run helm upgrade
+        run: |
+          helm repo add tractusx-dev https://eclipse-tractusx.github.io/charts/dev
+          helm install dataex tractusx-dev/data-exchange
+          helm upgrade dataex charts/data-exchange
+        if: github.event_name != 'pull_request' || steps.list-changed.outputs.changed == 'true'
