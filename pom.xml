@@ -110,20 +110,22 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-			<groupId>org.eclipse.dash</groupId>
-			<artifactId>license-tool-plugin</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<executions>
-				<execution>
-					<id>license-check</id>
-					<goals>
-						<goal>license-check</goal>
-					</goals>
-				</execution>
-			</executions>
-			<configuration>
-				<summary>DEPENDENCIES</summary>
-			</configuration>
+				<groupId>org.eclipse.dash</groupId>
+				<artifactId>license-tool-plugin</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>license-check</id>
+						<goals>
+							<goal>license-check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<summary>DEPENDENCIES</summary>
+					<projectId>automotive.tractusx</projectId>
+					<includeScope>test</includeScope>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

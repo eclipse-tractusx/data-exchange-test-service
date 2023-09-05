@@ -70,6 +70,14 @@ As for any pre-built image usage, it is the image user's responsibility to ensur
 
 [INSTALL.md](INSTALL.md)
 
+## Updating the `DEPENDENCIES` file
+
+To update the [DEPENDENCIES](./DEPENDENCIES) declarations, run:
+
+```shell
+./mvnw org.eclipse.dash:license-tool-plugin:license-check 
+```
+
 
 ### Licenses
 Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
