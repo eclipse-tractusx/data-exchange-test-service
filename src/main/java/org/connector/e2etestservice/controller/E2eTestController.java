@@ -58,7 +58,7 @@ public class E2eTestController {
 			@Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
 			@Value("${default.edc.apiKey}") String testConnectorApiKey) {
 		this.testConnectorService = testConnectorService;
-		this.testConnectorUrl = testConnectorUrl;
+		this.testConnectorUrl = Utils.removeLastSlashFromURL(testConnectorUrl);
 		this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
 		this.testConnectorApiKey = testConnectorApiKey;
 	}
