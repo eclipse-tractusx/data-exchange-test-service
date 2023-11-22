@@ -42,10 +42,10 @@ public class EdcTemplateFactory {
     }
 
     @SneakyThrows
-    public ObjectNode generateCatalogRequestObject(String templatePath,
-                                                   String providerProtocolUrl) {
+    public ObjectNode generateDynamicDummyEdcRequestObject(String templatePath,
+                                                   String dynamicVariable) {
         String readValueAsTree = getSchemaFromFile(templatePath);
-        String jsonString = String.format(readValueAsTree, providerProtocolUrl);
+        String jsonString = String.format(readValueAsTree, dynamicVariable);
         return (ObjectNode) new ObjectMapper().readTree(jsonString);
     }
 

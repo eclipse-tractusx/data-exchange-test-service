@@ -20,7 +20,6 @@
 
 package org.connector.e2etestservice.service;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.connector.e2etestservice.facilitator.ConnectorFacilitator;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
 import org.junit.jupiter.api.Test;
@@ -52,8 +51,8 @@ public class ConnectorServiceTest {
         ConnectorTestRequest providerConnector = getValidConnectorTestRequest();
 
         Mockito.when(dataOfferService.getCatalogRequestBody(providerConnector.getConnectorHost()+"/api/v1/dsp"))
-                .thenReturn((ObjectNode) any());
-        Mockito.when(connectorFacilitator.getContractOfferFromConnector(consumerConnector, (ObjectNode)any()))
+                .thenReturn(any());
+        Mockito.when(connectorFacilitator.getContractOfferFromConnector(consumerConnector, any()))
                 .thenReturn(getResponseEntityFromConnector());
 
         assertTrue(testConnectorService.testConnectorConnectivity(consumerConnector,
@@ -69,14 +68,15 @@ public class ConnectorServiceTest {
     }
 
     private ResponseEntity<String> getResponseEntityFromConnector() {
-        String connectorRes = "{\n" +
-                "    \"@id\": \"f9050d7a\",\n" +
-                "    \"@type\": \"dcat:Catalog\",\n" +
-                "    \"dcat:dataset\": {\n" +
-                "        \"@id\": \"sample\",\n" +
-                "        \"@type\": \"dcat:Dataset\"\n" +
-                "    }\n" +
-                "}";
+        String connectorRes = """
+                {
+                    "@id": "f9050d7a",
+                    "@type": "dcat:Catalog",
+                    "dcat:dataset": {
+                        "@id": "sample",
+                        "@type": "dcat:Dataset"
+                    }
+                }""";
 
         return new ResponseEntity<>(connectorRes, HttpStatus.OK);
     }

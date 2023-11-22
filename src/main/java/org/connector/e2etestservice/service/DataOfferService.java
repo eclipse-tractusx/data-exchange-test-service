@@ -25,6 +25,7 @@ import org.connector.e2etestservice.facilitator.ConnectorFacilitator;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
 import org.connector.e2etestservice.model.EdcTemplateFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,11 +35,15 @@ import lombok.extern.slf4j.Slf4j;
 public class DataOfferService {
 	private EdcTemplateFactory edcTemplateFactory;
 	private ConnectorFacilitator connectorFacilitator;
+	private String sampleAssetName;
 
 	@Autowired
-	public DataOfferService(EdcTemplateFactory edcTemplateFactory, ConnectorFacilitator connectorFacilitator) {
+	public DataOfferService(EdcTemplateFactory edcTemplateFactory,
+							ConnectorFacilitator connectorFacilitator,
+							@Value("${sample.asset.name}") String sampleAssetName) {
 		this.edcTemplateFactory = edcTemplateFactory;
 		this.connectorFacilitator = connectorFacilitator;
+		this.sampleAssetName = sampleAssetName;
 	}
 
 	public void createDataOfferForTesting(ConnectorTestRequest companyConnectorRequest) {
@@ -46,7 +51,7 @@ public class DataOfferService {
 			// 1. check if already present and then Create Asset
 			if (!connectorFacilitator.isTestAssetPresent(companyConnectorRequest)) {
 				ObjectNode assetEntryRequest = edcTemplateFactory.
-						generateDummyEdcRequestObject("/edc-request-template/sample-asset.json");
+						generateDynamicDummyEdcRequestObject("/edc-request-template/sample-asset.json", sampleAssetName);
 				connectorFacilitator.createAsset(companyConnectorRequest, assetEntryRequest);
 			}
 
@@ -72,7 +77,7 @@ public class DataOfferService {
 
 	public ObjectNode getCatalogRequestBody(String providerProtocolUrl) {
 		return edcTemplateFactory.
-				generateCatalogRequestObject(
+				generateDynamicDummyEdcRequestObject(
 						"/edc-request-template/sample-catalog.json", providerProtocolUrl);
 	}
 }

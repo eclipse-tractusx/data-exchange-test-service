@@ -5,10 +5,10 @@
 		"@id": "sample",
 		"properties": {
 			"id": "sample",
-			"name": "Welcome to Catena-X",
+			"name": "%s",
 			"contenttype": "application/json",
 			"policy-id": "use-eu",
-			"type": "data.core.digitalTwin.submodel"
+			"type": "data.core.sample"
 		}
 	},
 	"dataAddress": {
