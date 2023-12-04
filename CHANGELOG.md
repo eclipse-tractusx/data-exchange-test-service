@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
  - Updated helm lint workflow for helm upgrade
  - Updated trivy workflow
+ - Fixed vulnerability due to openssl
 
 ## [1.0.9] - 2023-08-31
 
