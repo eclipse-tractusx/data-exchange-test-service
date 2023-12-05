@@ -15,6 +15,7 @@ NA
  - Updated Dockefile for image creation
  - Updated deployment with runAsUser
  - Updated the workflow for helm lint
+ - Updated helm lint workflow for helm upgrade
 
 ### Removed
  - Removed values feom default values.yaml
