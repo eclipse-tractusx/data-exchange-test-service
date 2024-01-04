@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
  - Updated Dockefile for image creation
  - Updated deployment with runAsUser
  - Updated the workflow for helm lint
+ - Updated trivy workflow
 
 ### Removed
  - Removed values feom default values.yaml
