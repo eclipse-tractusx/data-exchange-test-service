@@ -43,9 +43,9 @@ public class EdcTemplateFactory {
 
     @SneakyThrows
     public ObjectNode generateDynamicDummyEdcRequestObject(String templatePath,
-                                                   String dynamicVariable) {
+                                                           String[] dynamicVariable) {
         String readValueAsTree = getSchemaFromFile(templatePath);
-        String jsonString = String.format(readValueAsTree, dynamicVariable);
+        String jsonString = String.format(readValueAsTree, (Object[])dynamicVariable);
         return (ObjectNode) new ObjectMapper().readTree(jsonString);
     }
 

@@ -37,13 +37,17 @@ public class DataOfferService {
 	private ConnectorFacilitator connectorFacilitator;
 	private String sampleAssetName;
 
+	private String sampleAssetType;
+
 	@Autowired
 	public DataOfferService(EdcTemplateFactory edcTemplateFactory,
 							ConnectorFacilitator connectorFacilitator,
-							@Value("${sample.asset.name}") String sampleAssetName) {
+							@Value("${sample.asset.name}") String sampleAssetName,
+							@Value("${sample.asset.type}") String sampleAssetType) {
 		this.edcTemplateFactory = edcTemplateFactory;
 		this.connectorFacilitator = connectorFacilitator;
 		this.sampleAssetName = sampleAssetName;
+		this.sampleAssetType = sampleAssetType;
 	}
 
 	public void createDataOfferForTesting(ConnectorTestRequest companyConnectorRequest) {
@@ -51,7 +55,7 @@ public class DataOfferService {
 			// 1. check if already present and then Create Asset
 			if (!connectorFacilitator.isTestAssetPresent(companyConnectorRequest)) {
 				ObjectNode assetEntryRequest = edcTemplateFactory.
-						generateDynamicDummyEdcRequestObject("/edc-request-template/sample-asset.json", sampleAssetName);
+						generateDynamicDummyEdcRequestObject("/edc-request-template/sample-asset.json", new String[]{sampleAssetName, sampleAssetType});
 				connectorFacilitator.createAsset(companyConnectorRequest, assetEntryRequest);
 			}
 
@@ -78,6 +82,6 @@ public class DataOfferService {
 	public ObjectNode getCatalogRequestBody(String providerProtocolUrl) {
 		return edcTemplateFactory.
 				generateDynamicDummyEdcRequestObject(
-						"/edc-request-template/sample-catalog.json", providerProtocolUrl);
+						"/edc-request-template/sample-catalog.json", new String[]{providerProtocolUrl});
 	}
 }

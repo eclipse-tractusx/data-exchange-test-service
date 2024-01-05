@@ -8,7 +8,7 @@
 			"name": "%s",
 			"contenttype": "application/json",
 			"policy-id": "use-eu",
-			"type": "data.core.sample"
+			"type": "%s"
 		}
 	},
 	"dataAddress": {
