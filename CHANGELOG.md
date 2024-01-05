@@ -5,7 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
-NA
+- Fixed veracode security CVE-2023-6378(logback-classic Denial Of Service)
+- Upgrade Spring Boot to get rid of CVE-2023-46589 and CVE-2023-34053
 
 ## [1.0.9] - 2023-08-31
 
@@ -15,6 +16,7 @@ NA
  - Updated Dockefile for image creation
  - Updated deployment with runAsUser
  - Updated the workflow for helm lint
+ - Updated trivy workflow
 
 ### Removed
  - Removed values feom default values.yaml
