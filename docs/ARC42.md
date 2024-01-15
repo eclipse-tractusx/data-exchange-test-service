@@ -27,7 +27,7 @@ testing of the connector as a Consumer and Provider.
 ### Non-functional requirements
 
 *   The E2E-DETS will have to be: accessible, easy to use, secure, efficient etc.
-*   The E2E-DETS will only support EDC Version 0.4.1
+*   The E2E-DETS will only support EDC Version 0.4 and EDC Version 0.5 (Cross version testing is not supported between 0.4 and 0.5)
 
 ### Quality Goals
 
