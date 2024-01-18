@@ -1,6 +1,6 @@
 /********************************************************************************
- * Copyright (c) 2023 T-Systems International GmbH
- * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2023,2024 T-Systems International GmbH
+ * Copyright (c) 2023,2024 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -25,6 +25,7 @@ import org.connector.e2etestservice.facilitator.ConnectorFacilitator;
 import org.connector.e2etestservice.model.ConnectorTestRequest;
 import org.connector.e2etestservice.model.EdcTemplateFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,11 +35,19 @@ import lombok.extern.slf4j.Slf4j;
 public class DataOfferService {
 	private EdcTemplateFactory edcTemplateFactory;
 	private ConnectorFacilitator connectorFacilitator;
+	private String sampleAssetName;
+
+	private String sampleAssetType;
 
 	@Autowired
-	public DataOfferService(EdcTemplateFactory edcTemplateFactory, ConnectorFacilitator connectorFacilitator) {
+	public DataOfferService(EdcTemplateFactory edcTemplateFactory,
+							ConnectorFacilitator connectorFacilitator,
+							@Value("${sample.asset.name}") String sampleAssetName,
+							@Value("${sample.asset.type}") String sampleAssetType) {
 		this.edcTemplateFactory = edcTemplateFactory;
 		this.connectorFacilitator = connectorFacilitator;
+		this.sampleAssetName = sampleAssetName;
+		this.sampleAssetType = sampleAssetType;
 	}
 
 	public void createDataOfferForTesting(ConnectorTestRequest companyConnectorRequest) {
@@ -46,7 +55,7 @@ public class DataOfferService {
 			// 1. check if already present and then Create Asset
 			if (!connectorFacilitator.isTestAssetPresent(companyConnectorRequest)) {
 				ObjectNode assetEntryRequest = edcTemplateFactory.
-						generateDummyEdcRequestObject("/edc-request-template/sample-asset.json");
+						generateDynamicDummyEdcRequestObject("/edc-request-template/sample-asset.json", new String[]{sampleAssetName, sampleAssetType});
 				connectorFacilitator.createAsset(companyConnectorRequest, assetEntryRequest);
 			}
 
@@ -72,7 +81,7 @@ public class DataOfferService {
 
 	public ObjectNode getCatalogRequestBody(String providerProtocolUrl) {
 		return edcTemplateFactory.
-				generateCatalogRequestObject(
-						"/edc-request-template/sample-catalog.json", providerProtocolUrl);
+				generateDynamicDummyEdcRequestObject(
+						"/edc-request-template/sample-catalog.json", new String[]{providerProtocolUrl});
 	}
 }

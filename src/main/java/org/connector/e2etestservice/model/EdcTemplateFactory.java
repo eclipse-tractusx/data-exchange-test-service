@@ -1,6 +1,6 @@
 /********************************************************************************
- * Copyright (c) 2023 T-Systems International GmbH
- * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2023,2024 T-Systems International GmbH
+ * Copyright (c) 2023,2024 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -42,10 +42,10 @@ public class EdcTemplateFactory {
     }
 
     @SneakyThrows
-    public ObjectNode generateCatalogRequestObject(String templatePath,
-                                                   String providerProtocolUrl) {
+    public ObjectNode generateDynamicDummyEdcRequestObject(String templatePath,
+                                                           String[] dynamicVariable) {
         String readValueAsTree = getSchemaFromFile(templatePath);
-        String jsonString = String.format(readValueAsTree, providerProtocolUrl);
+        String jsonString = String.format(readValueAsTree, (Object[])dynamicVariable);
         return (ObjectNode) new ObjectMapper().readTree(jsonString);
     }
 

@@ -1,6 +1,6 @@
 /********************************************************************************
- * Copyright (c) 2023 T-Systems International GmbH
- * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2023,2024 T-Systems International GmbH
+ * Copyright (c) 2023,2024 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -58,7 +58,7 @@ public class E2eTestController {
 			@Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
 			@Value("${default.edc.apiKey}") String testConnectorApiKey) {
 		this.testConnectorService = testConnectorService;
-		this.testConnectorUrl = testConnectorUrl;
+		this.testConnectorUrl = Utils.removeLastSlashFromURL(testConnectorUrl);
 		this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
 		this.testConnectorApiKey = testConnectorApiKey;
 	}

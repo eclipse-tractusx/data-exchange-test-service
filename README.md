@@ -36,7 +36,8 @@ Store all above values in application properties file.
 Currently, authentication is not supported for this service
 
 ### EDC Version Supported
-- 0.4.1
+- 0.4.x
+- 0.5.x (Cross version testing is not supported between 0.4 and 0.5)
 
 # Container images
 
