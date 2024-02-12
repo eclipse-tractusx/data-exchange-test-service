@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
+
+## [1.0.10] - 2024-02-12
 ### Fixed
 - Fixed veracode security CVE-2023-6378(logback-classic Denial Of Service)
 - Upgrade Spring Boot to get rid of CVE-2023-46589 and CVE-2023-34053
