@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Fixed security issue for openssl
 - Fixed preconfigured connector URL '/' issue
 - Fixed dynamic asset name generation issue
+- Fixed veracode security issue CVE-2023-6481
 
 ### Added
 - Added unit tests for Controller and service
