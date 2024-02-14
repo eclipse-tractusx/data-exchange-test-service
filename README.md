@@ -41,7 +41,7 @@ Currently, authentication is not supported for this service
 
 # Container images
 
-This application provides container images for demonstration purposes. The base image used, to build this demo application image is eclipse-temurin:17-jdk-alpine
+This application provides container images for demonstration purposes. The base image used, to build this demo application image is eclipse-temurin:17.0.10_7-jdk-jammy
 
 ## Notice for Docker image
 
@@ -57,7 +57,7 @@ __Data Exchange Test Service__
 
 **Used base image**
 
-- 17-jdk-alpine(https://hub.docker.com/layers/library/eclipse-temurin/17.0.6_10-jdk-alpine/images/sha256-c093675e143dc8023fb218c144e06491154491a7965d0664a93f99ada5259ec7?context=explore)
+- [eclipse-temurin:17.0.10_7-jdk-jammy](https://github.com/adoptium/containers)
 - Official Eclipse Temurin DockerHub page: https://hub.docker.com/_/eclipse-temurin
 - Eclipse Temurin Project: https://projects.eclipse.org/projects/adoptium.temurin
 - Additional information about the Eclipse Temurin images: https://github.com/docker-library/repo-info/tree/master/repos/eclipse-temurin
