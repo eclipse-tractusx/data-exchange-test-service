@@ -10,7 +10,7 @@ This service will help for testing the connectors and also can be used for healt
 
 ### Software Version
 ```shell
-Latest Helm version is v1.0.10
+Latest Helm version is v1.0.13
 Latest Application version is v1.0.10
 ```
 ### How to run
@@ -45,27 +45,7 @@ This application provides container images for demonstration purposes. The base 
 
 ## Notice for Docker image
 
-DockerHub: [https://hub.docker.com/r/tractusx/data-exchange-test-service](https://hub.docker.com/r/tractusx/data-exchange-test-service)  <br />
-Eclipse Tractus-X product(s) installed within the image:
-
-__Data Exchange Test Service__
-
-- GitHub: https://github.com/eclipse-tractusx/data-exchange-test-service
-- Project home: https://projects.eclipse.org/projects/automotive.tractusx
-- Dockerfile: https://github.com/eclipse-tractusx/data-exchange-test-service/blob/main/Dockerfile
-- Project license: [Apache License, Version 2.0](https://github.com/eclipse-tractusx/data-exchange-test-service/blob/main/LICENSE)
-
-**Used base image**
-
-- 17-jdk-alpine(https://hub.docker.com/layers/library/eclipse-temurin/17.0.6_10-jdk-alpine/images/sha256-c093675e143dc8023fb218c144e06491154491a7965d0664a93f99ada5259ec7?context=explore)
-- Official Eclipse Temurin DockerHub page: https://hub.docker.com/_/eclipse-temurin
-- Eclipse Temurin Project: https://projects.eclipse.org/projects/adoptium.temurin
-- Additional information about the Eclipse Temurin images: https://github.com/docker-library/repo-info/tree/master/repos/eclipse-temurin
-
-As with all Docker images, these likely also contain other software which may be under other licenses 
-(such as Bash, etc. from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
-
-As for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
+ [DOCKER_NOTICE.md](DOCKER_NOTICE.md)
 
 ## Installation Steps
 
