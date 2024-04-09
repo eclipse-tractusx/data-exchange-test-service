@@ -1,6 +1,6 @@
 #################################################################################
-# Copyright (c) 2024,2025 T-Systems International GmbH
-# Copyright (c) 2024,2025 Contributors to the Eclipse Foundation
+# Copyright (c) 2024 T-Systems International GmbH
+# Copyright (c) 2024 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -18,5 +18,25 @@
 # SPDX-License-Identifier: Apache-2.0
 ################################################################################
 
-product: "E2E_Data_Exchange_Test_Service"
-leadingRepository: "https://github.com/eclipse-tractusx/data-exchange-test-service"
+version: 2
+updates:
+    # Maintain dependencies for Maven
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+    # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+    # Maintain dependencies for Docker
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
