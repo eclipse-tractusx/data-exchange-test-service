@@ -39,7 +39,7 @@ on:
       upgrade_from:
         description: 'Data exchange test service chart version to upgrade from'
         # DETS version from 3.1 release
-        default: '1.0.9'
+        default: '1.0.10'
         required: false
         type: string
 
@@ -99,6 +99,6 @@ jobs:
       - name: Run helm upgrade
         run: |
           helm repo add tractusx-dev https://eclipse-tractusx.github.io/charts/dev
-          helm install dataex tractusx-dev/data-exchange --version ${{ github.event.inputs.upgrade_from || '1.0.9' }}
+          helm install dataex tractusx-dev/data-exchange --version ${{ github.event.inputs.upgrade_from || '1.0.10' }}
           helm upgrade dataex charts/data-exchange
         if: github.event_name != 'pull_request' || steps.list-changed.outputs.changed == 'true'
