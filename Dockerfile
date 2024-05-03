@@ -26,7 +26,7 @@ WORKDIR /tmp
 
 RUN mvn clean install -Dmaven.test.skip=true
 
-FROM eclipse-temurin:17.0.11_9-jdk-alpine
+FROM eclipse-temurin:20.0.2_9-jdk-alpine
 
 ENV TEMP=/tmp
 COPY --from=build $TEMP/target/*.jar /app/app.jar
