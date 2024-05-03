@@ -5,7 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
-- Base image upgraded due to vulenrabilites
+### Fixed
+- Base image upgraded due to vulnerabilities
+
+### Added
+- Support for edc v7
 
 ## [1.0.10] - 2024-02-12
 ### Fixed
