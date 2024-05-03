@@ -1,5 +1,7 @@
 {
-	"@context": {},
+	"@context": {
+		"@vocab": "https://w3id.org/edc/v0.0.1/ns/"
+	},
 	"@id": "samplecontract",
 	"@type": "ContractDefinition",
 	"accessPolicyId": "policysample",

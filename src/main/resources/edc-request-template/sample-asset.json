@@ -1,18 +1,16 @@
 {
-	"@context": {},
-	"asset": {
-		"@type": "Asset",
-		"@id": "sample",
-		"properties": {
-			"id": "sample",
-			"name": "%s",
-			"contenttype": "application/json",
-			"policy-id": "use-eu",
-			"type": "%s"
-		}
+	"@context": {
+		"@vocab": "https://w3id.org/edc/v0.0.1/ns/"
+	},
+	"properties": {
+		"id": "sample",
+		"name": "%s",
+		"contenttype": "application/json",
+		"policy-id": "use-eu",
+		"type": "%s"
 	},
 	"dataAddress": {
-		"type": "HttpProxy",
+		"type": "HttpData",
 		"baseUrl": "https://jsonplaceholder.typicode.com/todos/3"
 	}
 }

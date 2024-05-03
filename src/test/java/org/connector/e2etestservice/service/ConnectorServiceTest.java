@@ -50,7 +50,9 @@ public class ConnectorServiceTest {
         ConnectorTestRequest consumerConnector = getValidConnectorTestRequest();
         ConnectorTestRequest providerConnector = getValidConnectorTestRequest();
 
-        Mockito.when(dataOfferService.getCatalogRequestBody(providerConnector.getConnectorHost()+"/api/v1/dsp"))
+        Mockito.when(dataOfferService.getCatalogRequestBody(providerConnector.getConnectorHost()+"/api/v1/dsp",
+                providerConnector.getConnectorId()
+                ))
                 .thenReturn(any());
         Mockito.when(connectorFacilitator.getContractOfferFromConnector(consumerConnector, any()))
                 .thenReturn(getResponseEntityFromConnector());
@@ -63,6 +65,7 @@ public class ConnectorServiceTest {
         return ConnectorTestRequest.builder()
                 .apiKeyValue("api_key")
                 .apiKeyHeader("api_key_header")
+                .connectorId("connector_id")
                 .connectorHost("https://connector_host.com")
                 .build();
     }

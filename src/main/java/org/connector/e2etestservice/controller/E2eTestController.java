@@ -46,20 +46,23 @@ import jakarta.validation.Valid;
 public class E2eTestController {
 
 	private static final String MESSAGE = "message";
-	private String testConnectorUrl;
-	private String testConnectorApiKeyHeader;
-	private String testConnectorApiKey;
+	private final String testConnectorUrl;
+	private final String testConnectorId;
+	private final String testConnectorApiKeyHeader;
+	private final String testConnectorApiKey;
 
-	private TestConnectorService testConnectorService;
+	private final TestConnectorService testConnectorService;
 
 	@Autowired
 	public E2eTestController(TestConnectorService testConnectorService,
-			@Value("${default.edc.hostname}") String testConnectorUrl,
-			@Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
-			@Value("${default.edc.apiKey}") String testConnectorApiKey) {
+                             @Value("${default.edc.hostname}") String testConnectorUrl,
+							 @Value("${default.edc.id}") String testConnectorId,
+                             @Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
+                             @Value("${default.edc.apiKey}") String testConnectorApiKey) {
 		this.testConnectorService = testConnectorService;
 		this.testConnectorUrl = Utils.removeLastSlashFromURL(testConnectorUrl);
-		this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
+        this.testConnectorId = testConnectorId;
+        this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
 		this.testConnectorApiKey = testConnectorApiKey;
 	}
 
@@ -74,6 +77,7 @@ public class E2eTestController {
 		connectorTestRequest.setConnectorHost(Utils.removeLastSlashFromURL(connectorTestRequest.getConnectorHost()));
 
 		ConnectorTestRequest preconfiguredTestConnector = ConnectorTestRequest.builder().connectorHost(testConnectorUrl)
+				.connectorId(testConnectorId)
 				.apiKeyHeader(testConnectorApiKeyHeader).apiKeyValue(testConnectorApiKey).build();
 		boolean consumerTestResult = testConnectorService.testConnectorConnectivity(connectorTestRequest,
 				preconfiguredTestConnector);
@@ -98,11 +102,13 @@ public class E2eTestController {
 		Map<String, String> result = new HashMap<>();
 		ConnectorTestRequest firstConnector = ConnectorTestRequest.builder()
 				.connectorHost(Utils.removeLastSlashFromURL(ownConnectorTestRequest.getFirstConnectorHost()))
+				.connectorId(ownConnectorTestRequest.getFirstConnectorId())
 				.apiKeyHeader(ownConnectorTestRequest.getFirstApiKeyHeader())
 				.apiKeyValue(ownConnectorTestRequest.getFirstApiKeyValue()).build();
 
 		ConnectorTestRequest secondConnector = ConnectorTestRequest.builder()
 				.connectorHost(Utils.removeLastSlashFromURL(ownConnectorTestRequest.getSecondConnectorHost()))
+				.connectorId(ownConnectorTestRequest.getSecondConnectorId())
 				.apiKeyHeader(ownConnectorTestRequest.getSecondApiKeyHeader())
 				.apiKeyValue(ownConnectorTestRequest.getSecondApiKeyValue()).build();
 		boolean consumerTestResult = testConnectorService.testConnectorConnectivity(secondConnector, firstConnector);

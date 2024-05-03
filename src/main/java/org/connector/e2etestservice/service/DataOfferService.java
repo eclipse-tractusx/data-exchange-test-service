@@ -79,9 +79,9 @@ public class DataOfferService {
 
 	}
 
-	public ObjectNode getCatalogRequestBody(String providerProtocolUrl) {
+	public ObjectNode getCatalogRequestBody(String providerProtocolUrl, String providerConnectorId) {
 		return edcTemplateFactory.
 				generateDynamicDummyEdcRequestObject(
-						"/edc-request-template/sample-catalog.json", new String[]{providerProtocolUrl});
+						"/edc-request-template/sample-catalog.json", new String[]{providerProtocolUrl, providerConnectorId});
 	}
 }

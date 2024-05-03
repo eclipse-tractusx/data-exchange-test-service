@@ -1,11 +1,12 @@
 {
 	"@context": {
-		"odrl": "http://www.w3.org/ns/odrl/2/"
+		"@vocab": "https://w3id.org/edc/v0.0.1/ns/"
 	},
-	"@type": "PolicyDefinitionRequestDto",
+	"@type": "Set",
 	"@id": "policysample",
 	"policy": {
-		"@type": "Policy",
+		"@context": "http://www.w3.org/ns/odrl.jsonld",
+		"@type": "Set",
 		"odrl:permission": []
 	}
 }

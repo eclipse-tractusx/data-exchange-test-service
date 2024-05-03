@@ -105,6 +105,11 @@ SPDX-License-Identifier: Apache-2.0
 							<input type="text" class="form-control" id="connectorUrl"
 								   th:value="${connectorUrl}" name="connectorUrl">
 						</div>
+						<div class="form-group">
+							<label for="connectorId">Connector ID:</label>
+							<input type="text" class="form-control" id="connectorId"
+								   th:value="${connectorId}" name="connectorId">
+						</div>
 						<div class="form-group ">
 							<label for="apiKeyHeader">API key header:</label>
 							<input type="text" class="form-control" value="X-Api-Key" id="apiKeyHeader"
@@ -126,7 +131,12 @@ SPDX-License-Identifier: Apache-2.0
 					<div class="form-group">
 						<label for="preconfiguredConnectorUrl">Preconfigured Data provider Connector:</label>
 						<input type="text" class="form-control" id="preconfiguredConnectorUrl"
-							th:value="${preconfiguredConnectorUrl}" name="preconfiguredConnectorUrl">
+							th:value="${preconfiguredConnectorUrl}" name="preconfiguredConnectorUrl" readonly>
+					</div>
+					<div class="form-group">
+						<label for="preconfiguredConnectorId">Preconfigured Data provider Connector ID:</label>
+						<input type="text" class="form-control" id="preconfiguredConnectorId"
+							   th:value="${preconfiguredConnectorId}" name="preconfiguredConnectorId" readonly>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -157,6 +167,10 @@ SPDX-License-Identifier: Apache-2.0
 							<label for="firstConnectorUrl">Connector URL:</label><br>
 							<input type="text" class="form-control" id="firstConnectorUrl" name="firstConnectorUrl">
 						</div>
+						<div class="form-group">
+							<label for="firstConnectorId">Connector ID:</label><br>
+							<input type="text" class="form-control" id="firstConnectorId" name="firstConnectorId">
+						</div>
 						<div class="form-group ">
 							<label for="firstApiKeyHeader">API key header:</label>
 							<input type="text" class="form-control" value="X-Api-Key" id="firstApiKeyHeader"
@@ -177,6 +191,10 @@ SPDX-License-Identifier: Apache-2.0
 					<div class="form-group">
 						<label for="secondConnectorUrl">Connector URL:</label><br>
 						<input type="text" class="form-control" id="secondConnectorUrl" name="secondConnectorUrl">
+					</div>
+					<div class="form-group">
+						<label for="secondConnectorId">Connector ID:</label><br>
+						<input type="text" class="form-control" id="secondConnectorId" name="secondConnectorId">
 					</div>
 					<div class="form-group ">
 						<label for="secondApiKeyHeader">API key header:</label><br>
@@ -212,6 +230,7 @@ SPDX-License-Identifier: Apache-2.0
 
 					var dataJson = {
 						connectorHost: $("#connectorUrl").val(),
+						connectorId: $("#connectorId").val(),
 						apiKeyHeader: $("#apiKeyHeader").val(),
 						apiKeyValue: $("#apiKey").val()
 					};
@@ -239,9 +258,11 @@ SPDX-License-Identifier: Apache-2.0
 					$("#responseOwnConnector").html("");
 					var dataJson = {
 						firstConnectorHost: $("#firstConnectorUrl").val(),
+						firstConnectorId: $("#firstConnectorId").val(),
 						firstApiKeyHeader: $("#firstApiKeyHeader").val(),
 						firstApiKeyValue: $("#firstApiKey").val(),
 						secondConnectorHost: $("#secondConnectorUrl").val(),
+						secondConnectorId: $("#secondConnectorId").val(),
 						secondApiKeyHeader: $("#secondApiKeyHeader").val(),
 						secondApiKeyValue: $("#secondApiKey").val()
 					};

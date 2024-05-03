@@ -31,6 +31,9 @@ public class OwnConnectorTestRequest {
     @NotBlank(message = "Connector host is mandatory")
     private String firstConnectorHost;
 
+    @NotBlank(message = "Connector id is mandatory")
+    private String firstConnectorId;
+
     @NotBlank(message = "Api key header is mandatory")
     private String firstApiKeyHeader;
 
@@ -39,6 +42,9 @@ public class OwnConnectorTestRequest {
 
     @NotBlank(message = "Connector host is mandatory")
     private String secondConnectorHost;
+
+    @NotBlank(message = "Connector id is mandatory")
+    private String secondConnectorId;
 
     @NotBlank(message = "Api key header is mandatory")
     private String secondApiKeyHeader;

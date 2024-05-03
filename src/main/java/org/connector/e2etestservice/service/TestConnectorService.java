@@ -52,7 +52,8 @@ public class TestConnectorService {
 
 			// 2. Fetch newly created data offer from preconfigured test connector
 			ObjectNode catalogRequestBody = dataOfferService.getCatalogRequestBody(
-					providerConnectorRequest.getConnectorHost()+"/api/v1/dsp"
+					providerConnectorRequest.getConnectorHost()+"/api/v1/dsp",
+					providerConnectorRequest.getConnectorId()
 			);
 			ResponseEntity<String> contractOfferCatalog = connectorFacilitator
 					.getContractOfferFromConnector(consumerTestConnector, catalogRequestBody);

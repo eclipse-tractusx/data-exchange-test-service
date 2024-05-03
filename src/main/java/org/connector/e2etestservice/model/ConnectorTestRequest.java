@@ -31,6 +31,9 @@ public class ConnectorTestRequest {
 	@NotBlank(message = "Connector host is mandatory")
     private String connectorHost;
 
+    @NotBlank(message = "Connector id is mandatory")
+    private String connectorId;
+
     @NotBlank(message = "Api key header is mandatory")
     private String apiKeyHeader;
 
