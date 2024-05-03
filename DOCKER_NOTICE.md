@@ -12,7 +12,7 @@ __Data Exchange Test Service__
 
 **Used base image**
 
-- [eclipse-temurin:17.0.10_7-jdk-alpine](https://github.com/adoptium/containers)
+- [eclipse-temurin:17.0.11_9-jdk-alpine](https://github.com/adoptium/containers)
 - Official Eclipse Temurin DockerHub page: https://hub.docker.com/_/eclipse-temurin
 - Eclipse Temurin Project: https://projects.eclipse.org/projects/adoptium.temurin
 - Additional information about the Eclipse Temurin images: https://github.com/docker-library/repo-info/tree/master/repos/eclipse-temurin
