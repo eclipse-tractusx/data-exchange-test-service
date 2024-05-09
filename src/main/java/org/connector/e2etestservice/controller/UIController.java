@@ -31,17 +31,15 @@ public class UIController {
 
     private static final String RESULT = "result";
 
-    private String testConnectorUrl;
-    private String testConnectorApiKeyHeader;
-    private String testConnectorApiKey;
+    private final String testConnectorUrl;
+
+    private final String testConnectorId;
 
     @Autowired
     public UIController(@Value("${default.edc.hostname}") String testConnectorUrl,
-                        @Value("${default.edc.apiKeyHeader}") String testConnectorApiKeyHeader,
-                        @Value("${default.edc.apiKey}") String testConnectorApiKey) {
+                        @Value("${default.edc.id}") String testConnectorId) {
         this.testConnectorUrl = testConnectorUrl;
-        this.testConnectorApiKeyHeader = testConnectorApiKeyHeader;
-        this.testConnectorApiKey = testConnectorApiKey;
+        this.testConnectorId = testConnectorId;
     }
 
 
@@ -51,6 +49,7 @@ public class UIController {
         model.setViewName("index");
         model.addObject("preconfiguredConnectorUrl",testConnectorUrl);
         model.addObject("connectorApiKeyHeader","X-Api-Key");
+        model.addObject("preconfiguredConnectorId",testConnectorId);
         return model;
     }
 }

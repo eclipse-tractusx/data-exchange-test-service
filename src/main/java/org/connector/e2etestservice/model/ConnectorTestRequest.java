@@ -1,6 +1,6 @@
 /********************************************************************************
- * Copyright (c) 2023 T-Systems International GmbH
- * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2023,2024 T-Systems International GmbH
+ * Copyright (c) 2023,2024 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -30,6 +30,9 @@ public class ConnectorTestRequest {
 
 	@NotBlank(message = "Connector host is mandatory")
     private String connectorHost;
+
+    @NotBlank(message = "Connector id is mandatory")
+    private String connectorId;
 
     @NotBlank(message = "Api key header is mandatory")
     private String apiKeyHeader;

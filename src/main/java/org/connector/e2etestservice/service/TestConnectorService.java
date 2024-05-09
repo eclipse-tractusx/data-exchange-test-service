@@ -1,6 +1,6 @@
 /********************************************************************************
- * Copyright (c) 2023 T-Systems International GmbH
- * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2023,2024 T-Systems International GmbH
+ * Copyright (c) 2023,2024 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -52,7 +52,8 @@ public class TestConnectorService {
 
 			// 2. Fetch newly created data offer from preconfigured test connector
 			ObjectNode catalogRequestBody = dataOfferService.getCatalogRequestBody(
-					providerConnectorRequest.getConnectorHost()+"/api/v1/dsp"
+					providerConnectorRequest.getConnectorHost()+"/api/v1/dsp",
+					providerConnectorRequest.getConnectorId()
 			);
 			ResponseEntity<String> contractOfferCatalog = connectorFacilitator
 					.getContractOfferFromConnector(consumerTestConnector, catalogRequestBody);

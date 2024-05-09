@@ -112,6 +112,7 @@ public class E2eTestControllerTest {
                 .apiKeyValue("api_key")
                 .apiKeyHeader("api_key_header")
                 .connectorHost("https://connector_host.com")
+                .connectorId("connector_id")
                 .build();
     }
 
@@ -123,9 +124,11 @@ public class E2eTestControllerTest {
     private OwnConnectorTestRequest getValidOwnConnectorTestRequest() {
         return OwnConnectorTestRequest.builder()
                 .firstConnectorHost("https://connector_host.com")
+                .firstConnectorId("connector_id")
                 .firstApiKeyHeader("api_key_header")
                 .firstApiKeyValue("api_key")
                 .secondConnectorHost("https://connector_host.com")
+                .secondConnectorId("connector_id")
                 .secondApiKeyHeader("api_key_header")
                 .secondApiKeyValue("api_key")
                 .build();

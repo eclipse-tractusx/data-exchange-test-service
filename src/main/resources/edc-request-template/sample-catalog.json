@@ -1,7 +1,11 @@
 {
-	"@context": {},
+	"@context": {
+		"@vocab": "https://w3id.org/edc/v0.0.1/ns/"
+	},
+	"@type": "CatalogRequest",
+	"counterPartyAddress": "%s",
 	"protocol": "dataspace-protocol-http",
-	"providerUrl": "%s",
+	"counterPartyId": "%s",
 	"querySpec": {
 		"offset": 0,
 		"limit": 1,

@@ -1,6 +1,6 @@
 /********************************************************************************
- * Copyright (c) 2023 T-Systems International GmbH
- * Copyright (c) 2023 Contributors to the Eclipse Foundation
+ * Copyright (c) 2023,2024 T-Systems International GmbH
+ * Copyright (c) 2023,2024 Contributors to the Eclipse Foundation
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -34,14 +34,14 @@ import java.util.Map;
 
 @FeignClient(name = "DataOfferCreation", url = "placeholder")
 public interface DataOfferCreationProxy {
-    @PostMapping(value = "/data/v2/assets")
+    @PostMapping(value = "/data/v3/assets")
     public ResponseEntity<String> createAsset(
             URI baseUrl,
             @RequestHeader Map<String, String> requestHeader,
             @RequestBody ObjectNode assetEntryRequest
     );
 
-    @GetMapping(value = "/data/v2/assets/{assetId}")
+    @GetMapping(value = "/data/v3/assets/{assetId}")
     public ResponseEntity<String> checkIfAssetIsPresent(
             URI baseUrl,
             @RequestHeader Map<String, String> requestHeader,
