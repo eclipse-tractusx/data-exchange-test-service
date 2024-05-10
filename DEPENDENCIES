@@ -87,7 +87,7 @@ maven/mavencentral/org.springframework/spring-core/6.0.14, Apache-2.0 AND BSD-3-
 maven/mavencentral/org.springframework/spring-expression/6.0.14, Apache-2.0, approved, #3284
 maven/mavencentral/org.springframework/spring-jcl/6.0.14, Apache-2.0, approved, #3283
 maven/mavencentral/org.springframework/spring-test/6.0.14, Apache-2.0, approved, #7003
-maven/mavencentral/org.springframework/spring-web/6.0.14, Apache-2.0, approved, #5942
+maven/mavencentral/org.springframework/spring-web/6.1.6, Apache-2.0, approved, #11748
 maven/mavencentral/org.springframework/spring-webmvc/6.0.14, Apache-2.0, approved, #5944
 maven/mavencentral/org.thymeleaf/thymeleaf-spring6/3.1.2.RELEASE, Apache-2.0, approved, #10581
 maven/mavencentral/org.thymeleaf/thymeleaf/3.1.2.RELEASE, Apache-2.0, approved, CQ23960
