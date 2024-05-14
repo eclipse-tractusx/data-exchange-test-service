@@ -10,8 +10,8 @@ This service will help for testing the connectors and also can be used for healt
 
 ### Software Version
 ```shell
-Latest Helm version is v1.0.14
-Latest Application version is v1.0.11
+Latest Helm version is v1.0.15
+Latest Application version is v1.0.12
 ```
 ### How to run
 
