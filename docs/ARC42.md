@@ -27,7 +27,7 @@ testing of the connector as a Consumer and Provider.
 ### Non-functional requirements
 
 *   The E2E-DETS will have to be: accessible, easy to use, secure, efficient etc.
-*   The E2E-DETS will only support EDC Version 0.4 and EDC Version 0.5 (Cross version testing is not supported between 0.4 and 0.5)
+*   The E2E-DETS will only support EDC Version 0.7.
 
 ### Quality Goals
 
@@ -57,6 +57,7 @@ testing as a consumer and as a provider to give back result of connector testing
 ### Technical Context
 Information needed for end to end testing of connector:
 * URL of the onboarded connector 
+* Connector id which id used at the time of setting up the connector
 * API header of the onboarded connector 
 * API key of the the onboarded connector
 
@@ -83,21 +84,24 @@ There are two APIs we have provided in this service,
 POST /connector-test 
 ```json
 {
-    "connectorHost": "https://connector-url.com",
-    "apiKeyHeader": "X-Api-Key",
-    "apiKeyValue": "password"
+   "connectorHost": "https://connector-url.com",
+   "connectorId": "connector_id",
+   "apiKeyHeader": "X-Api-Key",
+   "apiKeyValue": "password"
 }
 ```
 2. Test your connector with any other network connector (which you need to provide in the request)
 POST /own-connector-test
 ```json
 {
-  "firstConnectorHost": "https://first-connector-url.com",
-  "firstApiKeyHeader": "first-connector-X-Api-Key",
-  "firstApiKeyValue": "first-connector-password",
-  "secondConnectorHost": "https://second-connector-url.com",
-  "secondApiKeyHeader": "second-connector-X-Api-Key",
-  "secondApiKeyValue": "second-connector-password"
+   "firstConnectorHost": "https://first-connector-url.com",
+   "firstConnectorId": "first-connector-id",
+   "firstApiKeyHeader": "first-connector-X-Api-Key",
+   "firstApiKeyValue": "first-connector-password",
+   "secondConnectorHost": "https://second-connector-url.com",
+   "secondConnectorId": "second-connector-id",
+   "secondApiKeyHeader": "second-connector-X-Api-Key",
+   "secondApiKeyValue": "second-connector-password"
 }
 ```
 Responses:
