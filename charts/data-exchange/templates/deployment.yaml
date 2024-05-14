@@ -1,7 +1,7 @@
 ---
 #################################################################################
-# Copyright (c) 2022,2023 T-Systems International GmbH
-# Copyright (c) 2022,2023 Contributors to the Eclipse Foundation
+# Copyright (c) 2022,2024 T-Systems International GmbH
+# Copyright (c) 2022,2024 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -79,7 +79,12 @@ spec:
               secretKeyRef:
                 name: {{ include "data-exchange.applicationSecret.name" . }}
                 key: e2edetsurl
-                
+          - name: DEFAULT_EDC_ID
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "data-exchange.applicationSecret.name" . }}
+                key: edcid
+
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
