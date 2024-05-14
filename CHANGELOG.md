@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
+### Changed
+- ARC 42 document update for the EDC 7 support.
+
 ### Fixed
 - CVE-2024-22262 springframework URL Parsing with Host Validation security issue
 - Multiple dependencies updated to maintain latest versions
