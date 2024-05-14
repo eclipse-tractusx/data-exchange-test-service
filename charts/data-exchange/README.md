@@ -1,6 +1,6 @@
 # data-exchange
 
-![Version: 1.0.15](https://img.shields.io/badge/Version-1.0.15-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.12](https://img.shields.io/badge/AppVersion-1.0.12-informational?style=flat-square)
+![Version: 1.0.16](https://img.shields.io/badge/Version-1.0.16-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.12](https://img.shields.io/badge/AppVersion-1.0.12-informational?style=flat-square)
 
 Data exchange service is used to exchange the data between connectors
 
@@ -21,6 +21,7 @@ Data exchange service is used to exchange the data between connectors
 | dataex.secret.edcapikey | string | `""` | Key for EDC API |
 | dataex.secret.edcapikeyheader | string | `""` | Header for EDC |
 | dataex.secret.edchostname | string | `""` | EDC connector Hostname |
+| dataex.secret.edcid | string | `""` | BPN for E2E data exchange test service |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` | Set the Image Pull Policy |
 | image.repository | string | `"tractusx/data-exchange-test-service"` | Image to use for deploying an application |
