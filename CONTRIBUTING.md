@@ -1,58 +1,56 @@
-# Contributing to Eclipse Tractus-X
+# Notices for Eclipse Tractus-X
 
-Thanks for your interest in this project.
+This content is produced and maintained by the Eclipse Tractus-X project.
 
-## Project description
+* Project home: https://projects.eclipse.org/projects/automotive.tractusx
 
-The companies involved want to increase the automotive industry's
-competitiveness, improve efficiency through industry-specific cooperation and
-accelerate company processes through standardization and access to information
-and data. A special focus is also on SMEs, whose active participation is of
-central importance for the networkâ€™s success. That is why Catena-X has been
-conceived from the outset as an open network with solutions ready for SMEs,
-where these companies will be able to participate quickly and with little IT
-infrastructure investment. Tractus-X is meant to be the PoC project of the
-Catena-X alliance focusing on parts traceability.
+See the AUTHORS file(s) distributed with this work for additional information regarding authorship.
 
-* https://projects.eclipse.org/projects/automotive.tractusx
+## Trademarks
 
-## Developer resources
+Eclipse Tractus-X is a trademark of the Eclipse Foundation.
 
-Information regarding source code management, builds, coding standards, and
-more.
+## Copyright
 
-* https://projects.eclipse.org/projects/automotive.tractusx/developer
+All content is the property of the respective authors or their employers. For
+more information regarding authorship of content, please consult the listed
+source code repository logs.
 
-The project maintains the source code repositories in the following GitHub organization:
+## Declared Project Licenses
 
-* https://github.com/eclipse-tractusx/
+The Tractus-X project uses the following licenses:
 
-## Eclipse Development Process
+- Apache-2.0 for code
+- CC-BY-4.0 for non-code
 
-This Eclipse Foundation open project is governed by the Eclipse Foundation
-Development Process and operates under the terms of the Eclipse IP Policy.
+Apache-2.0:
+This program and the accompanying materials are made available under the terms of the Apache License, Version 2.0 which is available at https://www.apache.org/licenses/LICENSE-2.0.
+SPDX-License-Identifier: Apache-2.0
 
-* https://eclipse.org/projects/dev_process
-* https://www.eclipse.org/org/documents/Eclipse_IP_Policy.pdf
+CC-BY-4.0:
+The materials in this repository are made available under the terms of the Creative Commons Attribution 4.0 International License, which is available at https://spdx.org/licenses/CC-BY-4.0.html.
+SPDX-License-Identifier: CC-BY-4.0
 
-## Eclipse Contributor Agreement
 
-In order to be able to contribute to Eclipse Foundation projects you must
-electronically sign the Eclipse Contributor Agreement (ECA).
+## Source Code
 
-* http://www.eclipse.org/legal/ECA.php
+The project maintains the following source code repositories:
 
-The ECA provides the Eclipse Foundation with a permanent record that you agree
-that each of your contributions will comply with the commitments documented in
-the Developer Certificate of Origin (DCO). Having an ECA on file associated with
-the email address matching the "Author" field of your contribution's Git commits
-fulfills the DCO's requirement that you sign-off on your contributions.
+* https://github.com/eclipse/tractusx
+* https://github.com/eclipse-tractusx/data-exchange-test-service
 
-For more information, please see the Eclipse Committer Handbook:
-https://www.eclipse.org/projects/handbook/#resources-commit
 
-## Contact
+## Third-party Content
 
-Contact the project developers via the project's "dev" list.
+This project leverages the following third party content.
 
-* https://accounts.eclipse.org/mailing-list/tractusx-dev
+See DEPENDENCIES file.
+
+## Cryptography
+
+Content may contain encryption software. The country in which you are currently
+may have restrictions on the import, possession, and use, and/or re-export to
+another country, of encryption software. BEFORE using any encryption software,
+please check the country's laws, regulations and policies concerning the import,
+possession, or use, and re-export of encryption software, to see if this is
+permitted.
