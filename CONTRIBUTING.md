@@ -1,56 +1,75 @@
-# Notices for Eclipse Tractus-X
+# Contributing to Eclipse Tractus-X
 
-This content is produced and maintained by the Eclipse Tractus-X project.
+Thanks for your interest in this project.
 
-* Project home: https://projects.eclipse.org/projects/automotive.tractusx
+## Project description
 
-See the AUTHORS file(s) distributed with this work for additional information regarding authorship.
+The companies involved want to increase the automotive industry's
+competitiveness, improve efficiency through industry-specific cooperation and
+accelerate company processes through standardization and access to information
+and data. A special focus is also on SMEs, whose active participation is of
+central importance for the network's success. That is why Catena-X has been
+conceived from the outset as an open network with solutions ready for SMEs,
+where these companies will be able to participate quickly and with little IT
+infrastructure investment. Tractus-X is meant to be the PoC project of the
+Catena-X alliance focusing on parts traceability.
 
-## Trademarks
+* https://projects.eclipse.org/projects/automotive.tractusx
 
-Eclipse Tractus-X is a trademark of the Eclipse Foundation.
-
-## Copyright
-
-All content is the property of the respective authors or their employers. For
-more information regarding authorship of content, please consult the listed
-source code repository logs.
-
-## Declared Project Licenses
+## Project licenses
 
 The Tractus-X project uses the following licenses:
 
-- Apache-2.0 for code
-- CC-BY-4.0 for non-code
+* Apache-2.0 for code
+* CC-BY-4.0 for non-code
 
-Apache-2.0:
-This program and the accompanying materials are made available under the terms of the Apache License, Version 2.0 which is available at https://www.apache.org/licenses/LICENSE-2.0.
-SPDX-License-Identifier: Apache-2.0
+## Terms of Use
 
-CC-BY-4.0:
-The materials in this repository are made available under the terms of the Creative Commons Attribution 4.0 International License, which is available at https://spdx.org/licenses/CC-BY-4.0.html.
-SPDX-License-Identifier: CC-BY-4.0
+This repository is subject to the Terms of Use of the Eclipse Foundation
 
+* https://www.eclipse.org/legal/termsofuse.php
 
-## Source Code
+## Developer resources
 
-The project maintains the following source code repositories:
+Information regarding source code management, builds, coding standards, and
+more.
 
-* https://github.com/eclipse/tractusx
+* https://projects.eclipse.org/projects/automotive.tractusx/developer
+
+Getting started:
+
+* https://eclipse-tractusx.github.io/docs/developer
+
+The project maintains the following source code repositories
+
 * https://github.com/eclipse-tractusx/data-exchange-test-service
 
+## Eclipse Development Process
 
-## Third-party Content
+This Eclipse Foundation open project is governed by the Eclipse Foundation
+Development Process and operates under the terms of the Eclipse IP Policy.
 
-This project leverages the following third party content.
+* https://eclipse.org/projects/dev_process
+* https://www.eclipse.org/org/documents/Eclipse_IP_Policy.pdf
 
-See DEPENDENCIES file.
+## Eclipse Contributor Agreement
 
-## Cryptography
+In order to be able to contribute to Eclipse Foundation projects you must
+electronically sign the Eclipse Contributor Agreement (ECA).
 
-Content may contain encryption software. The country in which you are currently
-may have restrictions on the import, possession, and use, and/or re-export to
-another country, of encryption software. BEFORE using any encryption software,
-please check the country's laws, regulations and policies concerning the import,
-possession, or use, and re-export of encryption software, to see if this is
-permitted.
+* http://www.eclipse.org/legal/ECA.php
+
+The ECA provides the Eclipse Foundation with a permanent record that you agree
+that each of your contributions will comply with the commitments documented in
+the Developer Certificate of Origin (DCO). Having an ECA on file associated with
+the email address matching the "Author" field of your contribution's Git commits
+fulfills the DCO's requirement that you sign-off on your contributions.
+
+For more information, please see the Eclipse Committer Handbook:
+https://www.eclipse.org/projects/handbook/#resources-commit
+
+## Contact
+
+Contact the project developers via the project's "dev" list.
+
+* https://accounts.eclipse.org/mailing-list/tractusx-dev
