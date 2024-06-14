@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@595be6a0f6560a0a8fc419ddf630567fc623531d # v0.22.0
         with:
           image-ref: "tractusx/data-exchange-test-service:latest" # Pull image from Docker Hub and run Trivy vulnerability scanner
           format: "sarif"
