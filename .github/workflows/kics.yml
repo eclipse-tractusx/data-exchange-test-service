@@ -51,7 +51,7 @@ jobs:
           path: "."
           # Fail on HIGH severity results
           fail_on: high
-          # Disable secrets detection - we use GitGuardian
+          # Disable secrets detection
           disable_secrets: true
           # when provided with a directory on output_path
           # it will generate the specified reports file named 'results.{extension}'

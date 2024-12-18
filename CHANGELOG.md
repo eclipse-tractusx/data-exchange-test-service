@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+- Upgraded the base image of eclipse-temurin
+- Added trufflehog
+- Updated dash tool plugin
+
 ## [1.0.13] - 2024-07-18
 ### Fixed
 - Dependabot spring-cloud, webmvc-ui and spring-boot version issues fixed.
